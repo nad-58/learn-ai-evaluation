@@ -11,7 +11,6 @@ Many AI projects focus mainly on building models. However, a useful AI system re
 - the data used to train and test the system;
 - the model behaviour under realistic conditions;
 - the performance metrics selected for the task;
-- the performance metrics selected for the task;
 - robustness to noise, edge cases, and distribution shift;
 - fairness and subgroup performance;
 - system-level behaviour after integration or deployment;
