@@ -2,7 +2,7 @@
 
 A practical, code-first repository for learning how to evaluate AI and machine learning systems across the full AI lifecycle.
 
-The repository starts with the foundations of classical machine learning evaluation and will gradually expand into dataset evaluation, computer vision evaluation, medical AI evaluation, fairness, robustness, monitoring, LLM evaluation, VLM evaluation, RAG evaluation, and agentic AI evaluation.
+The repository starts with the foundations of classical machine learning evaluation and is now expanding into dataset evaluation, computer vision evaluation, medical AI evaluation, fairness, robustness, monitoring, LLM evaluation, VLM evaluation, RAG evaluation, and agentic AI evaluation.
 
 ## Why this repository exists
 
@@ -20,7 +20,29 @@ The aim of this repository is to provide practical tutorials, notebooks, templat
 
 ## Current focus
 
-The first version focuses on classical machine learning evaluation:
+The current phase focuses on **Dataset Evaluation**:
+
+1. Missing values
+2. Duplicated records
+3. Class imbalance and label distribution
+4. Feature distribution
+5. Categorical cardinality
+6. Potential outliers
+7. Data splitting and leakage
+8. Dataset representativeness
+9. Dataset documentation
+
+New dataset-evaluation materials include:
+
+```text
+src/learn_ai_evaluation/dataset_quality.py
+examples/dataset-evaluation/dataset_quality_example.py
+templates/dataset-quality-report-template.md
+tutorials/008-dataset-quality-evaluation/README.md
+tutorials/009-data-splitting-and-leakage/README.md
+```
+
+Previous foundation topics include:
 
 1. What is AI Evaluation?
 2. Classification Metrics
@@ -29,20 +51,17 @@ The first version focuses on classical machine learning evaluation:
 5. Calibration and Confidence
 6. Dataset Splitting and Leakage
 
-## Future roadmap
+## 7-day roadmap
 
 The repository will grow step by step:
 
-- Dataset Evaluation
-- Classical ML Evaluation
-- Computer Vision Evaluation
-- Medical AI Evaluation
-- Bias, Fairness, and Robustness
-- Monitoring and Drift
-- LLM Evaluation
-- VLM Evaluation
-- RAG Evaluation
-- AI Agent and Agentic AI Evaluation
+1. Classical ML Evaluation
+2. Dataset Evaluation
+3. Computer Vision Evaluation
+4. Medical AI Evaluation
+5. Group Performance and Robustness
+6. Monitoring and Lifecycle Evaluation
+7. Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
 
 ## Repository structure
 
@@ -70,6 +89,12 @@ Clone the repository:
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
 pip install -r requirements.txt
+```
+
+Run the dataset-evaluation example:
+
+```bash
+python examples/dataset-evaluation/dataset_quality_example.py
 ```
 
 Then open any tutorial folder and run the related Python script or notebook.
