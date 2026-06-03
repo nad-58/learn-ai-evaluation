@@ -20,36 +20,31 @@ The aim of this repository is to provide practical tutorials, notebooks, templat
 
 ## Current focus
 
-The current phase focuses on **Dataset Evaluation**:
+The current phase focuses on **Computer Vision Evaluation**:
 
-1. Missing values
-2. Duplicated records
-3. Class imbalance and label distribution
-4. Feature distribution
-5. Categorical cardinality
-6. Potential outliers
-7. Data splitting and leakage
-8. Dataset representativeness
-9. Dataset documentation
+1. Image classification metrics
+2. Confusion matrices and per-class precision/recall/F1
+3. Segmentation metrics including IoU, Dice, and pixel accuracy
+4. Object detection metrics including box IoU, precision, recall, and average precision
+5. Dataset split risks for image, video, scene, subject, and object-level data
+6. Visual failure-case review
+7. Robustness checks for input variation
+8. Public-safe evaluation reporting
 
-New dataset-evaluation materials include:
+New computer-vision materials include:
 
 ```text
-src/learn_ai_evaluation/dataset_quality.py
-examples/dataset-evaluation/dataset_quality_example.py
-templates/dataset-quality-report-template.md
-tutorials/008-dataset-quality-evaluation/README.md
-tutorials/009-data-splitting-and-leakage/README.md
+src/learn_ai_evaluation/computer_vision_metrics.py
+examples/computer-vision-evaluation/cv_metrics_example.py
+templates/computer-vision-evaluation-report-template.md
+tutorials/010-computer-vision-evaluation/README.md
+tutorials/011-cv-dataset-splits-and-failure-review/README.md
 ```
 
-Previous foundation topics include:
+Previous phases include:
 
-1. What is AI Evaluation?
-2. Classification Metrics
-3. Confusion Matrix and Threshold Selection
-4. ROC-AUC and PR-AUC
-5. Calibration and Confidence
-6. Dataset Splitting and Leakage
+1. Classical ML evaluation
+2. Dataset evaluation, including missing values, duplicates, class imbalance, feature distribution, leakage checks, and dataset documentation
 
 ## 7-day roadmap
 
@@ -91,7 +86,13 @@ cd learn-ai-evaluation
 pip install -r requirements.txt
 ```
 
-Run the dataset-evaluation example:
+Run the computer-vision evaluation example:
+
+```bash
+python examples/computer-vision-evaluation/cv_metrics_example.py
+```
+
+You can also run the earlier dataset-evaluation example:
 
 ```bash
 python examples/dataset-evaluation/dataset_quality_example.py
