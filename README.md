@@ -2,58 +2,66 @@
 
 A practical, code-first repository for learning how to evaluate AI and machine learning systems across the full AI lifecycle.
 
-The repository starts with the foundations of classical machine learning evaluation and is now expanding into dataset evaluation, computer vision evaluation, medical AI evaluation, fairness, robustness, monitoring, LLM evaluation, VLM evaluation, RAG evaluation, and agentic AI evaluation.
+The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, VLMs, RAG systems, and AI agents.
 
 ## Why this repository exists
 
 Many AI projects focus mainly on building models. However, a useful AI system requires more than model training. It requires clear evaluation of:
 
 - the data used to train and test the system;
-- the model behaviour under realistic conditions;
-- the performance metrics selected for the task;
+- model behaviour under realistic conditions;
+- the suitability and limitations of selected metrics;
 - robustness to noise, edge cases, and distribution shift;
-- fairness and subgroup performance;
+- fairness and group performance;
 - system-level behaviour after integration or deployment;
 - monitoring and re-evaluation over time.
 
-The aim of this repository is to provide practical tutorials, notebooks, templates, and examples that make AI evaluation easier to understand and apply.
+The aim is to provide practical tutorials, templates, reusable Python utilities, and worked examples that make AI evaluation easier to understand and apply.
 
 ## Current focus
 
-The current phase focuses on **Technical Medical AI Evaluation**:
+The current addition is **Foundational Large Language Model Evaluation**.
 
-1. Case-level and subject-level evaluation units
-2. Sensitivity, specificity, precision, negative predictive value, and balanced accuracy
-3. Threshold selection and threshold sweeps
-4. Confidence intervals and sample support
-5. Calibration review
-6. Multi-site and subgroup evaluation
-7. Ground-truth quality and annotation uncertainty
-8. Segmentation Dice and volume comparison
-9. Split, leakage, and repeated-observation risks
-10. Model update and re-evaluation principles
-11. Public-safe technical reporting
+It introduces:
 
-New and existing medical-AI materials include:
+1. Perplexity
+2. Exact match
+3. Token precision, recall, and F1
+4. ROUGE-N and ROUGE-L
+5. BLEU
+6. METEOR
+7. BERTScore
+8. LLM-as-a-judge evaluation
+9. Human evaluation
+10. Metric selection by task
+11. Group, robustness, operational, and failure analysis
+12. Reproducible LLM evaluation reporting
+
+The tutorial explains the equations, interpretation, appropriate use, and limitations of each metric. It also emphasises that no single metric is sufficient for evaluating correctness, semantic quality, factuality, usefulness, safety, and system behaviour.
+
+New LLM materials include:
 
 ```text
-src/learn_ai_evaluation/medical_ai_evaluation.py
-src/learn_ai_evaluation/medical_ai_metrics.py
-examples/medical-ai-evaluation/medical_ai_binary_example.py
-examples/medical-ai-evaluation/medical_ai_evaluation_example.py
-templates/medical-ai-evaluation-report-template.md
-tutorials/012-medical-ai-evaluation/README.md
+src/learn_ai_evaluation/llm_metrics.py
+examples/llm-evaluation/basic_llm_metrics_example.py
+templates/llm-evaluation-report-template.md
+tutorials/015-foundational-llm-evaluation/README.md
 ```
 
-Previous phases include:
+Run the worked example:
 
-1. Classical ML evaluation
-2. Dataset evaluation, including missing values, duplicates, class imbalance, feature distribution, leakage checks, and dataset documentation
-3. Computer vision evaluation, including classification, segmentation, object detection, split risks, and visual failure review
+```bash
+python examples/llm-evaluation/basic_llm_metrics_example.py
+```
+
+## Previous completed areas
+
+- Classical ML evaluation
+- Dataset evaluation, including missing values, duplicates, class imbalance, feature distributions, and leakage
+- Computer vision evaluation, including classification, segmentation, detection, split risks, and failure review
+- Technical medical AI evaluation, including case-level analysis, uncertainty, multi-site evaluation, robustness, change control, and lifecycle monitoring
 
 ## 7-day roadmap
-
-The repository will grow step by step:
 
 1. Classical ML Evaluation
 2. Dataset Evaluation
@@ -79,37 +87,25 @@ learn-ai-evaluation/
 
 ## Public-safe scope
 
-This repository is educational and technical. It avoids confidential case material and does not include client-specific documentation. Examples should use synthetic data, public datasets, or generalised scenarios. Medical-AI content addresses technical evaluation only and does not provide clinical advice or demonstrate suitability for clinical use.
+This repository is educational and technical. It avoids confidential case material and client-specific documentation. Examples use synthetic data, public datasets, or generalised scenarios.
 
 ## How to use
-
-Clone the repository:
 
 ```bash
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
 ```
 
-Run the current case-level medical AI example:
+Run examples from the repository root:
 
 ```bash
+python examples/llm-evaluation/basic_llm_metrics_example.py
 python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
-```
-
-Run the threshold and calibration example:
-
-```bash
-python examples/medical-ai-evaluation/medical_ai_binary_example.py
-```
-
-You can also run earlier examples:
-
-```bash
 python examples/computer-vision-evaluation/cv_metrics_example.py
 python examples/dataset-evaluation/dataset_quality_example.py
 ```
 
-Then open any tutorial folder and run the related Python script or notebook.
+Then open the related tutorial folder for equations, interpretation, limitations, and reporting guidance.
 
 ## License
 
