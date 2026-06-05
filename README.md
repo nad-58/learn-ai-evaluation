@@ -20,31 +20,36 @@ The aim of this repository is to provide practical tutorials, notebooks, templat
 
 ## Current focus
 
-The current phase focuses on **Computer Vision Evaluation**:
+The current phase focuses on **Technical Medical AI Evaluation**:
 
-1. Image classification metrics
-2. Confusion matrices and per-class precision/recall/F1
-3. Segmentation metrics including IoU, Dice, and pixel accuracy
-4. Object detection metrics including box IoU, precision, recall, and average precision
-5. Dataset split risks for image, video, scene, subject, and object-level data
-6. Visual failure-case review
-7. Robustness checks for input variation
-8. Public-safe evaluation reporting
+1. Case-level and subject-level evaluation units
+2. Sensitivity, specificity, precision, negative predictive value, and balanced accuracy
+3. Threshold selection and threshold sweeps
+4. Confidence intervals and sample support
+5. Calibration review
+6. Multi-site and subgroup evaluation
+7. Ground-truth quality and annotation uncertainty
+8. Segmentation Dice and volume comparison
+9. Split, leakage, and repeated-observation risks
+10. Model update and re-evaluation principles
+11. Public-safe technical reporting
 
-New computer-vision materials include:
+New and existing medical-AI materials include:
 
 ```text
-src/learn_ai_evaluation/computer_vision_metrics.py
-examples/computer-vision-evaluation/cv_metrics_example.py
-templates/computer-vision-evaluation-report-template.md
-tutorials/010-computer-vision-evaluation/README.md
-tutorials/011-cv-dataset-splits-and-failure-review/README.md
+src/learn_ai_evaluation/medical_ai_evaluation.py
+src/learn_ai_evaluation/medical_ai_metrics.py
+examples/medical-ai-evaluation/medical_ai_binary_example.py
+examples/medical-ai-evaluation/medical_ai_evaluation_example.py
+templates/medical-ai-evaluation-report-template.md
+tutorials/012-medical-ai-evaluation/README.md
 ```
 
 Previous phases include:
 
 1. Classical ML evaluation
 2. Dataset evaluation, including missing values, duplicates, class imbalance, feature distribution, leakage checks, and dataset documentation
+3. Computer vision evaluation, including classification, segmentation, object detection, split risks, and visual failure review
 
 ## 7-day roadmap
 
@@ -74,7 +79,7 @@ learn-ai-evaluation/
 
 ## Public-safe scope
 
-This repository is educational and technical. It avoids confidential case material and does not include client-specific documentation. Examples should use synthetic data, public datasets, or generalised scenarios.
+This repository is educational and technical. It avoids confidential case material and does not include client-specific documentation. Examples should use synthetic data, public datasets, or generalised scenarios. Medical-AI content addresses technical evaluation only and does not provide clinical advice or demonstrate suitability for clinical use.
 
 ## How to use
 
@@ -83,18 +88,24 @@ Clone the repository:
 ```bash
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
-pip install -r requirements.txt
 ```
 
-Run the computer-vision evaluation example:
+Run the current case-level medical AI example:
+
+```bash
+python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
+```
+
+Run the threshold and calibration example:
+
+```bash
+python examples/medical-ai-evaluation/medical_ai_binary_example.py
+```
+
+You can also run earlier examples:
 
 ```bash
 python examples/computer-vision-evaluation/cv_metrics_example.py
-```
-
-You can also run the earlier dataset-evaluation example:
-
-```bash
 python examples/dataset-evaluation/dataset_quality_example.py
 ```
 
