@@ -1,8 +1,18 @@
-"""Worked example for foundational LLM evaluation metrics."""
+"""Worked example for foundational LLM evaluation metrics.
 
+Run from the repository root:
+
+    python examples/llm-evaluation/basic_llm_metrics_example.py
+"""
+
+from pathlib import Path
 from pprint import pprint
+import sys
 
-from learn_ai_evaluation.llm_metrics import (
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
+from learn_ai_evaluation.llm_metrics import (  # noqa: E402
     bleu_1,
     exact_match,
     perplexity,
@@ -28,7 +38,6 @@ def main() -> None:
     print("ROUGE-L F1:", round(rouge_l_f1(prediction, reference), 3))
     print("BLEU-1:", round(bleu_1(prediction, reference), 3))
 
-    # Synthetic token probabilities assigned to an observed sequence.
     probabilities = [0.70, 0.55, 0.82, 0.61, 0.77]
     print("Perplexity:", round(perplexity(probabilities), 3))
 
