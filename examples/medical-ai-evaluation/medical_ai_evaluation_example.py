@@ -1,8 +1,18 @@
-"""Worked example for technical medical AI evaluation using synthetic data."""
+"""Worked example for technical medical AI evaluation using synthetic data.
 
+Run from the repository root:
+
+    python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
+"""
+
+from pathlib import Path
 from pprint import pprint
+import sys
 
-from learn_ai_evaluation.medical_ai_metrics import (
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
+from learn_ai_evaluation.medical_ai_metrics import (  # noqa: E402
     binary_evaluation,
     dice_score,
     site_level_evaluation,
@@ -12,7 +22,6 @@ from learn_ai_evaluation.medical_ai_metrics import (
 
 
 def main() -> None:
-    # Synthetic case-level data. Each row represents one independent case.
     y_true = [1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0]
     probabilities = [0.91, 0.20, 0.73, 0.48, 0.15, 0.62, 0.88, 0.33, 0.81, 0.12, 0.67, 0.41]
     sites = ["site_a"] * 6 + ["site_b"] * 6
@@ -39,7 +48,6 @@ def main() -> None:
         print(site)
         pprint(result)
 
-    # Small flattened synthetic masks for demonstration only.
     reference_mask = [0, 0, 1, 1, 1, 0, 0, 1]
     predicted_mask = [0, 1, 1, 1, 0, 0, 0, 1]
     print(f"\nSynthetic segmentation Dice score: {dice_score(reference_mask, predicted_mask):.3f}")
