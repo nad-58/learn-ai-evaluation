@@ -1,15 +1,25 @@
 """Runnable example for dataset quality evaluation.
 
+Run from the repository root:
+
+    python examples/dataset-evaluation/dataset_quality_example.py
+
 This example uses a small synthetic dataset so it can be shared publicly and run
 without external data.
 """
 
 from __future__ import annotations
 
+from pathlib import Path
+import sys
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from learn_ai_evaluation.dataset_quality import (
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
+from learn_ai_evaluation.dataset_quality import (  # noqa: E402
     categorical_cardinality_report,
     class_balance_report,
     duplicate_report,
@@ -55,7 +65,12 @@ def main() -> None:
     print("\nPotential outliers")
     print(outlier_report_iqr(df, numeric_columns=["age", "score"]))
 
-    train_df, test_df = train_test_split(df, test_size=0.3, random_state=7, stratify=df["label"])
+    train_df, test_df = train_test_split(
+        df,
+        test_size=0.3,
+        random_state=7,
+        stratify=df["label"],
+    )
 
     print("\nExact split leakage check")
     print(split_leakage_report(train_df, test_df, columns=["sample_id"]))
