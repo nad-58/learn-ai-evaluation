@@ -1,15 +1,17 @@
-"""Run from the repository root with:
-python examples/vlm-evaluation/basic_vlm_evaluation_example.py
+"""Worked example for large vision-language model evaluation.
+
+Run from the repository root:
+
+    python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 """
 
 from pathlib import Path
 import sys
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-if str(REPOSITORY_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPOSITORY_ROOT))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
 
-from src.learn_ai_evaluation.vlm_metrics import (  # noqa: E402
+from learn_ai_evaluation.vlm_metrics import (  # noqa: E402
     abstention_rates,
     exact_match,
     mean_reciprocal_rank,
