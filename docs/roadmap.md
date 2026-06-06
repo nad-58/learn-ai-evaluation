@@ -1,6 +1,6 @@
 # Roadmap
 
-This repository is developed gradually using a 7-day learning roadmap. The first phase focuses on classical machine learning evaluation because it provides the foundation for all later topics. The repository has now moved through dataset evaluation and into computer vision evaluation.
+This repository follows a seven-phase learning roadmap from foundational machine-learning evaluation to advanced multimodal and agentic AI evaluation. The current development focus is advanced AI evaluation.
 
 ## Current tutorials
 
@@ -12,20 +12,22 @@ This repository is developed gradually using a 7-day learning roadmap. The first
 - 009 Data Splitting and Leakage
 - 010 Computer Vision Evaluation
 - 011 Computer Vision Dataset Splits and Failure Review
+- 015 Foundational Large Language Model Evaluation
+- 016 Large Vision-Language Model Evaluation
 
 ## Phase 1 — Foundations and Classical ML Evaluation
 
 - What is AI Evaluation?
-- Classification Metrics
-- Group Performance Evaluation
-- Robustness Evaluation
-- Confusion Matrix and Threshold Selection
+- Classification metrics
+- Group performance evaluation
+- Robustness evaluation
+- Confusion matrix and threshold selection
 - ROC-AUC and PR-AUC
-- Calibration and Confidence
-- Dataset Splitting and Leakage
-- Cross-Validation
-- Error Analysis
-- Class Imbalance
+- Calibration and confidence
+- Dataset splitting and leakage
+- Cross-validation
+- Error analysis
+- Class imbalance
 
 ## Phase 2 — Dataset Evaluation
 
@@ -39,18 +41,6 @@ This repository is developed gradually using a 7-day learning roadmap. The first
 - Dataset documentation
 
 ## Phase 3 — Computer Vision Evaluation
-
-Status: in progress.
-
-New materials added:
-
-```text
-src/learn_ai_evaluation/computer_vision_metrics.py
-examples/computer-vision-evaluation/cv_metrics_example.py
-templates/computer-vision-evaluation-report-template.md
-tutorials/010-computer-vision-evaluation/README.md
-tutorials/011-cv-dataset-splits-and-failure-review/README.md
-```
 
 Topics covered:
 
@@ -66,7 +56,7 @@ Topics covered:
 
 ## Phase 4 — Medical AI Evaluation
 
-This section will focus on technical AI evaluation and validation concepts without using confidential examples.
+This section focuses on technical AI evaluation and validation concepts without confidential examples or clinical guidance.
 
 - Sensitivity and specificity
 - Subject-level or case-level splitting
@@ -85,7 +75,7 @@ This section will focus on technical AI evaluation and validation concepts witho
 - Robustness testing
 - Distribution shift
 - Stress testing under realistic input variation
-- Subgroup-specific limitations and mitigations
+- Group-specific limitations and mitigations
 
 ## Phase 6 — Monitoring and AI Lifecycle Evaluation
 
@@ -100,12 +90,35 @@ This section will focus on technical AI evaluation and validation concepts witho
 
 ## Phase 7 — Advanced AI Evaluation
 
-- LLM evaluation
-- Prompt evaluation
-- Factuality evaluation
-- VLM evaluation
+Status: in progress.
+
+### Completed additions
+
+#### Foundational Large Language Model Evaluation
+
+```text
+src/learn_ai_evaluation/llm_metrics.py
+examples/llm-evaluation/basic_llm_metrics_example.py
+templates/llm-evaluation-report-template.md
+tutorials/015-foundational-llm-evaluation/README.md
+```
+
+#### Large Vision-Language Model Evaluation
+
+```text
+src/learn_ai_evaluation/vlm_metrics.py
+examples/vlm-evaluation/basic_vlm_evaluation_example.py
+templates/vlm-evaluation-report-template.md
+tutorials/016-large-vision-language-model-evaluation/README.md
+```
+
+The VLM phase covers task correctness, visual perception, cross-modal grounding, retrieval, unsupported claims, answerability, abstention, robustness, group analysis, human and model-based judging, safety, efficiency, reproducibility, and integrated system evaluation.
+
+### Next planned additions
+
 - RAG retrieval evaluation
-- RAG answer evaluation
+- RAG answer and grounding evaluation
 - AI agent evaluation
 - Tool-use evaluation
 - Agentic workflow evaluation
+- Advanced monitoring and lifecycle evaluation for generative systems
