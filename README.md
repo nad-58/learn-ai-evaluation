@@ -20,39 +20,35 @@ The aim is to provide practical tutorials, templates, reusable Python utilities,
 
 ## Current focus
 
-The current addition is **Large Vision-Language Model Evaluation**.
+The current completed phase is **Group Performance and Robustness Evaluation**.
 
 It covers:
 
-1. Task-specific evaluation for visual question answering, captioning, retrieval, OCR, grounding, and multimodal reasoning
-2. Separation of visual perception, cross-modal alignment, reasoning, and answer generation
-3. Exact match and token-level F1
-4. Retrieval Recall@K and mean reciprocal rank
-5. Visual grounding and unsupported-claim analysis
-6. Answerability and abstention evaluation
-7. Group and slice performance analysis
-8. Image and prompt robustness testing
-9. Human and model-based judging
-10. Safety and adversarial multimodal evaluation
-11. Efficiency and operational behaviour
-12. Integrated system-level evaluation
-13. Reproducible reporting and failure analysis
+1. predefining meaningful groups and analysis units;
+2. per-group precision, recall/sensitivity, specificity, F1, AUROC, AUPRC, prevalence, and Brier score;
+3. worst-group performance, absolute gaps, and performance ratios;
+4. bootstrap confidence intervals and evidence-quality flags;
+5. the distinction between standalone acceptability, between-group disparity, insufficient evidence, and robustness degradation;
+6. controlled tests for noise, missing inputs, and feature scaling or distribution shift;
+7. project-defined acceptance checks, issue tracking, mitigation, and retesting.
 
-The central principle is that a large vision-language model should not be judged only by fluent output or one benchmark score. Evaluation must establish whether responses are correct, visually grounded, robust, appropriately uncertain, safe, efficient, and reliable after integration.
-
-New VLM materials include:
+New materials include:
 
 ```text
-src/learn_ai_evaluation/vlm_metrics.py
-examples/vlm-evaluation/basic_vlm_evaluation_example.py
-templates/vlm-evaluation-report-template.md
-tutorials/016-large-vision-language-model-evaluation/README.md
+src/learn_ai_evaluation/group_robustness.py
+examples/group-performance-and-robustness/group_robustness_example.py
+tutorials/005-group-performance-and-robustness/README.md
+templates/group-performance-test-plan.md
+templates/robustness-test-plan.md
+templates/group-robustness-acceptance-criteria.md
+templates/group-robustness-issue-mitigation-log.md
+tests/test_group_robustness.py
 ```
 
 Run the worked example:
 
 ```bash
-python examples/vlm-evaluation/basic_vlm_evaluation_example.py
+python examples/group-performance-and-robustness/group_robustness_example.py
 ```
 
 ## Previous completed areas
@@ -62,15 +58,16 @@ python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 - Computer vision evaluation, including classification, segmentation, detection, split risks, and failure review
 - Technical medical AI evaluation, including case-level analysis, uncertainty, multi-site evaluation, robustness, change control, and lifecycle monitoring
 - Foundational large language model evaluation
+- Large vision-language model evaluation
 
 ## 7-day roadmap
 
-1. Classical ML Evaluation
-2. Dataset Evaluation
-3. Computer Vision Evaluation
-4. Medical AI Evaluation
-5. Group Performance and Robustness
-6. Monitoring and Lifecycle Evaluation
+1. ✅ Classical ML Evaluation
+2. ✅ Dataset Evaluation
+3. ✅ Computer Vision Evaluation
+4. ✅ Medical AI Evaluation
+5. ✅ Group Performance and Robustness
+6. **Next: Monitoring and Lifecycle Evaluation**
 7. Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
 
 ## Repository structure
@@ -84,6 +81,7 @@ learn-ai-evaluation/
 ├── data/                         # Synthetic and public example datasets
 ├── templates/                    # Evaluation report and checklist templates
 ├── examples/                     # End-to-end worked examples
+├── tests/                        # Lightweight automated checks
 └── assets/                       # Figures and diagrams
 ```
 
@@ -96,16 +94,24 @@ This repository is educational and technical. It avoids confidential case materi
 ```bash
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
+pip install -r requirements.txt
 ```
 
 Run examples from the repository root:
 
 ```bash
+python examples/group-performance-and-robustness/group_robustness_example.py
 python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 python examples/llm-evaluation/basic_llm_metrics_example.py
 python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
 python examples/computer-vision-evaluation/cv_metrics_example.py
 python examples/dataset-evaluation/dataset_quality_example.py
+```
+
+Run the Phase 5 tests:
+
+```bash
+python -m pytest tests/test_group_robustness.py -q
 ```
 
 Then open the related tutorial folder for equations, interpretation, limitations, and reporting guidance.
