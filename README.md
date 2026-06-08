@@ -4,6 +4,19 @@ A practical, code-first repository for learning how to evaluate AI and machine l
 
 The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, large vision-language models, RAG systems, and AI agents.
 
+## Quick navigation
+
+| Goal | Start here |
+|---|---|
+| Understand the scope | Read this README and the roadmap |
+| Evaluate data quality | Open the dataset-evaluation tutorial and example |
+| Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
+| Review fairness and robustness | Open the group-performance and robustness materials |
+| Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
+| Evaluate LLM or VLM systems | Open the LLM and VLM examples, then compare with the dedicated LLM/RAG governance repository |
+| Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
+| Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
+
 ## Why this repository exists
 
 Many AI projects focus mainly on building models. However, a useful AI system requires more than model training. It requires clear evaluation of data, model behaviour, metrics, robustness, fairness, system integration, monitoring, and re-evaluation over time.
@@ -71,15 +84,13 @@ learn-ai-evaluation/
 └── assets/                       # Figures and diagrams
 ```
 
-## Public-safe scope
-
-This repository is educational and technical. It avoids confidential case material and client-specific documentation. Examples use synthetic data, public datasets, or generalised scenarios.
-
 ## How to use
 
 ```bash
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -98,11 +109,29 @@ python examples/dataset-evaluation/dataset_quality_example.py
 Run tests:
 
 ```bash
-python -m pytest tests/test_monitoring_lifecycle.py -q
-python -m pytest tests/test_group_robustness.py -q
+python -m pytest tests/ -q
 ```
 
 Then open the related tutorial folder for interpretation, limitations, and reporting guidance.
+
+## After exploring this repository
+
+- For reusable lifecycle validation reports and templates, use the private **AI Model Validation Framework** repository.
+- For architecture and layer-level system thinking, see [AI Architecture Stack](https://github.com/nad-58/ai-architecture-stack).
+- For LLM/RAG groundedness, retrieval, traceability, and human oversight, see [LLM RAG Evaluation Governance](https://github.com/nad-58/llm-rag-evaluation-governance).
+- For edge deployment and computer vision constraints, see [Edge AI Computer Vision Deployment](https://github.com/nad-58/edge-ai-computer-vision-deployment).
+
+## Development and releases
+
+- Contribution guidance: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Security policy: [`SECURITY.md`](SECURITY.md)
+- Changelog: [`CHANGELOG.md`](CHANGELOG.md)
+- Package metadata: [`pyproject.toml`](pyproject.toml)
+- Citation metadata: [`CITATION.cff`](CITATION.cff)
+
+## Public-safe scope
+
+This repository is educational and technical. It avoids confidential case material and client-specific documentation. Examples use synthetic data, public datasets, or generalised scenarios.
 
 ## License
 
