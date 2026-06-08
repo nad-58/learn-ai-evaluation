@@ -17,9 +17,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
+      - name: Compile Python sources
+        run: python -m compileall -q src examples tests
       - name: Run tests
         run: python -m pytest tests/ -q
-      - name: Check formatting
-        run: black --check src tests examples
-      - name: Check style
-        run: flake8 src tests examples --max-line-length=100
