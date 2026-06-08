@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Learn AI Evaluation"
+type: software
+authors:
+  - family-names: Nadernejad
+    given-names: Ehsan
+repository-code: "https://github.com/nad-58/learn-ai-evaluation"
+version: 0.2.0
+date-released: 2026-06-08
+license: MIT
