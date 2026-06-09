@@ -14,6 +14,7 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
 | Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
+| Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) and the LLM evaluator example |
 | Review VLM/LVLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
 | Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 | Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
@@ -40,6 +41,20 @@ templates/system-level-evaluation-report.md
 tests/test_advanced_ai.py
 ```
 
+The systematic LLM evaluation track adds a practical transition from early manual output review to repeatable prompt and model comparison:
+
+```text
+src/learn_ai_evaluation/llm_judge.py
+tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md
+examples/llm-judge-evaluation/llm_judge_example.py
+templates/llm-evaluation-playbook.md
+templates/llm-evaluator-alignment.md
+templates/prompt-iteration-report.md
+tests/test_llm_judge.py
+```
+
+These materials cover code-based, human-based, and model-based evaluation; baseline curation; evaluator calibration; order-bias mitigation; rubric scoring; prompt-version comparison; proxy-metric warnings; latency and cost tracking; and regression-aware iteration.
+
 The VLM evaluation track has also been expanded using lessons from LVLM-eHub and the open-source VLMEvalKit project:
 
 ```text
@@ -56,13 +71,15 @@ Run the worked examples:
 
 ```bash
 python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+python examples/llm-judge-evaluation/llm_judge_example.py
 python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 ```
 
-Run the Phase 7 and VLM tests:
+Run the Phase 7, LLM evaluator, and VLM tests:
 
 ```bash
 python -m pytest tests/test_advanced_ai.py -q
+python -m pytest tests/test_llm_judge.py -q
 python -m pytest tests/test_vlm_metrics.py -q
 ```
 
@@ -116,6 +133,7 @@ Run examples from the repository root:
 
 ```bash
 python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+python examples/llm-judge-evaluation/llm_judge_example.py
 python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
 python examples/group-performance-and-robustness/group_robustness_example.py
@@ -133,10 +151,14 @@ python -m pytest tests/ -q
 
 Then open the related tutorial folder for interpretation, limitations, and reporting guidance.
 
-## References used for the VLM track
+## Methodological references used in the advanced tracks
 
-- LVLM-eHub: a comprehensive benchmark combining quantitative evaluation and open-world human preference assessment.
-- VLMEvalKit: an open-source toolkit using generation-based evaluation across many VLM models and benchmarks, with exact matching and LLM-based answer extraction.
+The systematic LLM evaluation track was informed by the provided engineering playbook on moving beyond subjective output review toward measurable, repeatable prompt evaluation. The repository implementation uses original educational utilities and templates rather than copying the source material.
+
+For the VLM track:
+
+- LVLM-eHub provides a benchmark structure combining quantitative evaluation and open-world human preference assessment.
+- VLMEvalKit provides an open-source reference for generation-based evaluation across many VLM models and benchmarks, with exact matching and model-based answer extraction.
 
 These external resources are used as methodological references only. The examples and templates in this repository are simplified, original educational implementations.
 
