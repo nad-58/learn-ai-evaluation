@@ -10,7 +10,27 @@ The format follows a simple Keep a Changelog style and uses semantic versioning 
 
 - Expand benchmark coverage with more public-safe synthetic examples
 - Add optional integration examples for external evaluation platforms
-- Add more cross-version regression reports
+- Add cross-version trend visualisation
+
+## [1.1.0] - 2026-06-09
+
+### Added
+
+- Automated benchmark runner for the synthetic advanced AI benchmark
+- Per-track aggregation for LLM, VLM, RAG, agentic AI, and system-level evaluation
+- Equal-weight overall benchmark score
+- CSV-based benchmark baseline and regression thresholds
+- Absolute minimum-score checks and maximum allowed-drop checks
+- JSON, CSV, and Markdown benchmark reports
+- CI regression gate that fails when an acceptance threshold is breached
+- GitHub Actions artifact upload for generated benchmark reports
+- Unit tests for benchmark loading, aggregation, rule parsing, and pass/fail behaviour
+
+### Changed
+
+- Updated package version to 1.1.0
+- Extended the validation workflow to run benchmark regression checks
+- Added benchmark reports and regression thresholds to repository navigation
 
 ## [1.0.0] - 2026-06-09
 

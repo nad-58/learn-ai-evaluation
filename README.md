@@ -2,7 +2,7 @@
 
 A practical, code-first repository for learning how to evaluate AI and machine learning systems across the full AI lifecycle.
 
-The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, large vision-language models, RAG systems, and AI agents.
+The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, vision-language models, RAG systems, and AI agents.
 
 ## Quick navigation
 
@@ -14,37 +14,76 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
 | Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
-| Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) and the LLM evaluator example |
-| Review VLM/LVLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
-| Review the synthetic benchmark | Open [`data/synthetic_benchmark.md`](data/synthetic_benchmark.md) and [`data/synthetic_benchmark.csv`](data/synthetic_benchmark.csv) |
-| Review sample cross-system results | Open [`docs/sample_results.md`](docs/sample_results.md) |
-| Review stable release notes | Open [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md) |
+| Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) |
+| Review VLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
+| Run automated benchmark regression checks | Open [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
+| Review benchmark thresholds | Open [`data/benchmark_baseline.csv`](data/benchmark_baseline.csv) |
+| Review generated benchmark results | Open [`reports/benchmark_report.md`](reports/benchmark_report.md) |
+| Review v1.1.0 release notes | Open [`docs/release_notes_1_1_0.md`](docs/release_notes_1_1_0.md) |
 | Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 | Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
 
 ## Why this repository exists
 
-Many AI projects focus mainly on building models. However, a useful AI system requires more than model training. It requires clear evaluation of data, model behaviour, metrics, robustness, fairness, system integration, monitoring, and re-evaluation over time.
+Many AI projects focus mainly on building models. A useful AI system requires more than model training. It requires clear evaluation of data, model behaviour, metrics, robustness, fairness, system integration, monitoring, and re-evaluation over time.
 
-The aim is to provide practical tutorials, templates, reusable Python utilities, and worked examples that make AI evaluation easier to understand and apply.
+The aim is to provide practical tutorials, templates, reusable Python utilities, benchmarks, and worked examples that make AI evaluation easier to understand and apply.
 
-## Current focus
+## Current release
 
-The current completed phase is **Advanced AI Evaluation**. Package metadata is prepared for the first stable release, **v1.0.0**.
+The current package version is **1.1.0 — Automated Benchmarking and Regression Evaluation**.
 
-New materials include:
+Version 1.1.0 adds:
 
 ```text
-src/learn_ai_evaluation/advanced_ai.py
-examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
-tutorials/007-advanced-ai-evaluation/README.md
-templates/rag-evaluation-report.md
-templates/agent-evaluation-report.md
-templates/system-level-evaluation-report.md
-tests/test_advanced_ai.py
+src/learn_ai_evaluation/benchmark_regression.py
+scripts/run_benchmark.py
+data/benchmark_baseline.csv
+reports/benchmark_results.json
+reports/benchmark_results.csv
+reports/benchmark_report.md
+tests/test_benchmark_regression.py
+docs/benchmark-regression-guide.md
 ```
 
-The systematic LLM evaluation track adds a practical transition from early manual output review to repeatable prompt and model comparison:
+The benchmark runner reads the synthetic benchmark, calculates per-track and overall scores, compares them with acceptance rules, generates three report formats, and returns a non-zero exit code when a regression is detected.
+
+## Run automated benchmarking
+
+From the repository root:
+
+```bash
+python scripts/run_benchmark.py
+```
+
+Generated outputs:
+
+```text
+reports/benchmark_results.json
+reports/benchmark_results.csv
+reports/benchmark_report.md
+```
+
+Optional configuration:
+
+```bash
+python scripts/run_benchmark.py \
+  --benchmark data/synthetic_benchmark.csv \
+  --baseline data/benchmark_baseline.csv \
+  --output-dir reports
+```
+
+For each track, the effective acceptance floor is:
+
+```text
+max(minimum_score, baseline_score - max_allowed_drop)
+```
+
+The command fails when any track falls below this floor. GitHub Actions uses this behaviour as a regression gate and uploads the generated reports as a workflow artifact.
+
+## Advanced evaluation resources
+
+The systematic LLM evaluation track includes:
 
 ```text
 src/learn_ai_evaluation/llm_judge.py
@@ -56,9 +95,7 @@ templates/prompt-iteration-report.md
 tests/test_llm_judge.py
 ```
 
-These materials cover code-based, human-based, and model-based evaluation; baseline curation; evaluator calibration; order-bias mitigation; rubric scoring; prompt-version comparison; proxy-metric warnings; latency and cost tracking; and regression-aware iteration.
-
-The VLM evaluation track has also been expanded using lessons from LVLM-eHub and the open-source VLMEvalKit project:
+The VLM evaluation track includes:
 
 ```text
 docs/vlm-evaluation-notes.md
@@ -68,50 +105,9 @@ templates/vlm-evaluation-report.md
 tests/test_vlm_metrics.py
 ```
 
-The VLM materials cover six capability groups: visual perception, visual knowledge acquisition, visual reasoning, visual commonsense, object hallucination, and embodied or action-oriented intelligence. They also document generation-based evaluation, answer extraction, prompt-template effects, long-response handling, and human or pairwise review.
+The broader advanced evaluation phase includes LLM, VLM, RAG, agentic AI, and combined system-level evaluation.
 
-## Stable release validation
-
-The release-candidate workflow performs:
-
-```bash
-python -m compileall -q src tests examples scripts
-python -m pytest tests -q
-python scripts/run_all_examples.py
-python -m build
-python -m twine check dist/*
-```
-
-GitHub Actions runs these checks for pull requests and pushes. The repository also contains public-safe synthetic benchmark data and a consolidated sample-results report covering LLM, VLM, RAG, agentic AI, and combined system evaluation.
-
-Run the worked examples:
-
-```bash
-python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
-python examples/llm-judge-evaluation/llm_judge_example.py
-python examples/vlm-evaluation/basic_vlm_evaluation_example.py
-```
-
-Run the Phase 7, LLM evaluator, and VLM tests:
-
-```bash
-python -m pytest tests/test_advanced_ai.py -q
-python -m pytest tests/test_llm_judge.py -q
-python -m pytest tests/test_vlm_metrics.py -q
-```
-
-## Previous completed areas
-
-- Classical ML evaluation
-- Dataset evaluation, including missing values, duplicates, class imbalance, feature distributions, and leakage
-- Computer vision evaluation, including classification, segmentation, detection, split risks, and failure review
-- Technical medical AI evaluation, including case-level analysis, uncertainty, multi-site evaluation, robustness, change control, and lifecycle monitoring
-- Group performance and robustness evaluation
-- Monitoring and lifecycle evaluation
-- Foundational large language model evaluation
-- Large vision-language model evaluation
-
-## 7-day roadmap
+## Completed roadmap
 
 1. ✅ Classical ML Evaluation
 2. ✅ Dataset Evaluation
@@ -120,77 +116,63 @@ python -m pytest tests/test_vlm_metrics.py -q
 5. ✅ Group Performance and Robustness
 6. ✅ Monitoring and Lifecycle Evaluation
 7. ✅ Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
+8. ✅ Automated Benchmarking and Regression Evaluation
 
 ## Repository structure
 
 ```text
 learn-ai-evaluation/
-├── docs/                         # Roadmap, glossary, reports, and conceptual notes
+├── docs/                         # Roadmap, guides, reports, and conceptual notes
 ├── tutorials/                    # Main tutorial chapters
 ├── notebooks/                    # Runnable notebooks
 ├── src/learn_ai_evaluation/      # Reusable Python utilities
-├── data/                         # Synthetic and public example datasets
+├── data/                         # Synthetic benchmark data and baselines
+├── reports/                      # Machine-readable and human-readable results
 ├── templates/                    # Evaluation report and checklist templates
 ├── examples/                     # End-to-end worked examples
-├── scripts/                      # Repository validation utilities
-├── tests/                        # Lightweight automated checks
+├── scripts/                      # Validation and benchmark runners
+├── tests/                        # Automated checks
 └── assets/                       # Figures and diagrams
 ```
 
-## How to use
+## Installation
 
 ```bash
 git clone https://github.com/nad-58/learn-ai-evaluation.git
 cd learn-ai-evaluation
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+python -m pip install -e ".[dev]"
 ```
 
-Run examples from the repository root:
+## Validation
+
+Run the full local validation sequence:
 
 ```bash
-python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
-python examples/llm-judge-evaluation/llm_judge_example.py
-python examples/vlm-evaluation/basic_vlm_evaluation_example.py
-python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
-python examples/group-performance-and-robustness/group_robustness_example.py
-python examples/llm-evaluation/basic_llm_metrics_example.py
-python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
-python examples/computer-vision-evaluation/cv_metrics_example.py
-python examples/dataset-evaluation/dataset_quality_example.py
-```
-
-Run tests and all examples:
-
-```bash
-python -m pytest tests/ -q
+python -m compileall -q src tests examples scripts
+python -m pytest tests -q
 python scripts/run_all_examples.py
+python scripts/run_benchmark.py
+python -m build
+python -m twine check dist/*
 ```
 
-Then open the related tutorial folder for interpretation, limitations, and reporting guidance.
+GitHub Actions performs the same checks for pushes and pull requests. Benchmark reports are uploaded as CI artifacts.
 
 ## Methodological references used in the advanced tracks
 
-The systematic LLM evaluation track was informed by the provided engineering playbook on moving beyond subjective output review toward measurable, repeatable prompt evaluation. The repository implementation uses original educational utilities and templates rather than copying the source material.
+The systematic LLM evaluation track was informed by the provided engineering playbook on moving beyond subjective output review toward measurable, repeatable prompt evaluation. The repository implementation uses original educational utilities and templates.
 
 For the VLM track:
 
 - LVLM-eHub provides a benchmark structure combining quantitative evaluation and open-world human preference assessment.
 - VLMEvalKit provides an open-source reference for generation-based evaluation across many VLM models and benchmarks, with exact matching and model-based answer extraction.
 
-These external resources are used as methodological references only. The examples and templates in this repository are simplified, original educational implementations.
-
-## After exploring this repository
-
-- For reusable lifecycle validation reports and templates, use the private **AI Model Validation Framework** repository.
-- For architecture and layer-level system thinking, see [AI Architecture Stack](https://github.com/nad-58/ai-architecture-stack).
-- For LLM/RAG groundedness, retrieval, traceability, and human oversight, see [LLM RAG Evaluation Governance](https://github.com/nad-58/llm-rag-evaluation-governance).
-- For edge deployment and computer vision constraints, see [Edge AI Computer Vision Deployment](https://github.com/nad-58/edge-ai-computer-vision-deployment).
-
 ## Development and releases
 
-- Release notes: [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md)
+- v1.1.0 notes: [`docs/release_notes_1_1_0.md`](docs/release_notes_1_1_0.md)
+- v1.0.0 notes: [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md)
 - Contribution guidance: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Security policy: [`SECURITY.md`](SECURITY.md)
 - Changelog: [`CHANGELOG.md`](CHANGELOG.md)

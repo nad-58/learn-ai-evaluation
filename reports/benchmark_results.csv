@@ -1,0 +1,7 @@
+track,current_score,baseline_score,minimum_score,allowed_floor,delta,passed,reason
+agent,0.666500,0.666500,0.600000,0.616500,0.000000,True,within acceptance limits
+llm,0.833333,0.833333,0.750000,0.783333,0.000000,True,within acceptance limits
+overall,0.676600,0.676600,0.650000,0.650000,0.000000,True,within acceptance limits
+rag,0.500000,0.500000,0.450000,0.450000,0.000000,True,within acceptance limits
+system,0.716500,0.716500,0.700000,0.700000,0.000000,True,within acceptance limits
+vlm,0.666667,0.666667,0.600000,0.616667,0.000000,True,within acceptance limits

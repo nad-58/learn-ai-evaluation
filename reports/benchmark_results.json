@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "track_scores": {
+    "llm": 0.8333333333333334,
+    "vlm": 0.6666666666666666,
+    "rag": 0.5,
+    "agent": 0.6665,
+    "system": 0.7165,
+    "overall": 0.6766
+  },
+  "regression_results": [
+    {
+      "track": "agent",
+      "current_score": 0.6665,
+      "baseline_score": 0.6665,
+      "minimum_score": 0.6,
+      "allowed_floor": 0.6165,
+      "delta": 0.0,
+      "passed": true,
+      "reason": "within acceptance limits"
+    },
+    {
+      "track": "llm",
+      "current_score": 0.8333333333333334,
+      "baseline_score": 0.833333,
+      "minimum_score": 0.75,
+      "allowed_floor": 0.783333,
+      "delta": 0.0000003333333334,
+      "passed": true,
+      "reason": "within acceptance limits"
+    },
+    {
+      "track": "overall",
+      "current_score": 0.6766,
+      "baseline_score": 0.6766,
+      "minimum_score": 0.65,
+      "allowed_floor": 0.65,
+      "delta": 0.0,
+      "passed": true,
+      "reason": "within acceptance limits"
+    },
+    {
+      "track": "rag",
+      "current_score": 0.5,
+      "baseline_score": 0.5,
+      "minimum_score": 0.45,
+      "allowed_floor": 0.45,
+      "delta": 0.0,
+      "passed": true,
+      "reason": "within acceptance limits"
+    },
+    {
+      "track": "system",
+      "current_score": 0.7165,
+      "baseline_score": 0.7165,
+      "minimum_score": 0.7,
+      "allowed_floor": 0.7,
+      "delta": 0.0,
+      "passed": true,
+      "reason": "within acceptance limits"
+    },
+    {
+      "track": "vlm",
+      "current_score": 0.6666666666666666,
+      "baseline_score": 0.666667,
+      "minimum_score": 0.6,
+      "allowed_floor": 0.616667,
+      "delta": -0.0000003333333334,
+      "passed": true,
+      "reason": "within acceptance limits"
+    }
+  ]
+}
