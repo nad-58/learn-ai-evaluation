@@ -14,6 +14,7 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
 | Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
+| Review VLM/LVLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
 | Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 | Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
 
@@ -39,16 +40,30 @@ templates/system-level-evaluation-report.md
 tests/test_advanced_ai.py
 ```
 
-Run the worked example:
+The VLM evaluation track has also been expanded using lessons from LVLM-eHub and the open-source VLMEvalKit project:
+
+```text
+docs/vlm-evaluation-notes.md
+src/learn_ai_evaluation/vlm_metrics.py
+examples/vlm-evaluation/basic_vlm_evaluation_example.py
+templates/vlm-evaluation-report.md
+tests/test_vlm_metrics.py
+```
+
+The VLM materials cover six capability groups: visual perception, visual knowledge acquisition, visual reasoning, visual commonsense, object hallucination, and embodied or action-oriented intelligence. They also document generation-based evaluation, answer extraction, prompt-template effects, long-response handling, and human or pairwise review.
+
+Run the worked examples:
 
 ```bash
 python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 ```
 
-Run the Phase 7 tests:
+Run the Phase 7 and VLM tests:
 
 ```bash
 python -m pytest tests/test_advanced_ai.py -q
+python -m pytest tests/test_vlm_metrics.py -q
 ```
 
 ## Previous completed areas
@@ -101,9 +116,9 @@ Run examples from the repository root:
 
 ```bash
 python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
 python examples/group-performance-and-robustness/group_robustness_example.py
-python examples/vlm-evaluation/basic_vlm_evaluation_example.py
 python examples/llm-evaluation/basic_llm_metrics_example.py
 python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
 python examples/computer-vision-evaluation/cv_metrics_example.py
@@ -117,6 +132,13 @@ python -m pytest tests/ -q
 ```
 
 Then open the related tutorial folder for interpretation, limitations, and reporting guidance.
+
+## References used for the VLM track
+
+- LVLM-eHub: a comprehensive benchmark combining quantitative evaluation and open-world human preference assessment.
+- VLMEvalKit: an open-source toolkit using generation-based evaluation across many VLM models and benchmarks, with exact matching and LLM-based answer extraction.
+
+These external resources are used as methodological references only. The examples and templates in this repository are simplified, original educational implementations.
 
 ## After exploring this repository
 
