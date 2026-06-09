@@ -21,20 +21,52 @@ Simple metrics in this repository include lexical overlap, required fact coverag
 
 ## 2. Vision language model evaluation
 
-Vision language models need both language and visual grounding evaluation. The model may produce fluent text while missing objects, inventing visual details, misreading text, or misunderstanding spatial relationships.
+Vision language models need both language and visual grounding evaluation. A model may produce fluent text while missing objects, inventing visual details, misreading text, misunderstanding spatial relationships, or following a prompt format inconsistently.
 
-Common checks include:
+A broad evaluation should cover six capability groups:
 
-- object or concept coverage;
-- forbidden or hallucinated concepts;
-- visual question answering quality;
-- OCR and document understanding;
-- counting;
-- chart or table interpretation;
-- spatial reasoning;
-- consistency between answer and image content.
+1. visual perception, including classification, object identification, and counting;
+2. visual knowledge acquisition, including OCR, key information extraction, and captioning;
+3. visual reasoning, including VQA, visual entailment, spatial reasoning, and knowledge-grounded description;
+4. visual commonsense, including colour, shape, material, composition, and scene-level reasoning;
+5. object hallucination, including unsupported objects or attributes;
+6. embodied or action-oriented intelligence, including planning reasonability and executability.
 
-The example metric in this repository checks expected terms, forbidden terms, and a simple VLM answer score.
+Useful evaluation modes include:
+
+- direct question answering with task-specific metrics;
+- generation-based multiple-choice evaluation with answer extraction;
+- multi-turn decomposition for complex visual reasoning;
+- rubric-based human or judge review;
+- anonymised pairwise preference evaluation for open-world questions.
+
+### VLM metrics
+
+Common metrics include:
+
+- exact match and token F1 for short answers;
+- accuracy and mean reciprocal rank for VQA and multiple-choice tasks;
+- word accuracy and entity-level F1 for OCR and document extraction;
+- semantic similarity and human quality review for captioning;
+- unsupported-claim rate for open-ended answers;
+- accuracy, precision, recall, F1, and yes-ratio for yes/no hallucination tests;
+- object recognition, spatial understanding, conciseness, reasonability, and executability for planning tasks.
+
+### Important VLM evaluation risks
+
+Benchmark performance alone may hide poor open-world generalisation. Instruction-tuned models can perform strongly on familiar in-domain tasks while failing on open-ended questions. Object hallucination must be evaluated separately because a fluent caption may contain unsupported visual claims. Traditional captioning metrics may also undervalue semantically correct answers when wording differs from the reference.
+
+Prompt templates, answer extraction, reasoning-output handling, and software versions must be recorded. Current VLM toolkits commonly use generation-based evaluation and may report both exact matching and LLM-based answer extraction. For models that produce long reasoning traces, separate the reasoning text from the final answer before scoring, and use prediction storage formats that avoid truncating long outputs.
+
+Repository resources:
+
+```text
+docs/vlm-evaluation-notes.md
+templates/vlm-evaluation-report.md
+src/learn_ai_evaluation/vlm_metrics.py
+examples/vlm-evaluation/basic_vlm_evaluation_example.py
+tests/test_vlm_metrics.py
+```
 
 ## 3. RAG evaluation
 
