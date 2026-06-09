@@ -1,0 +1,13 @@
+track,case_id,reference,prediction,score
+llm,LLM-01,baseline,candidate,1.0
+llm,LLM-02,baseline,candidate,1.0
+llm,LLM-03,tie,candidate,0.5
+vlm,VLM-01,line chart warning metrics,line chart warning metrics,1.0
+vlm,VLM-02,no bicycle,bicycle visible,0.0
+vlm,VLM-03,two red objects,two red objects,1.0
+rag,RAG-01,monitoring and risk,monitoring dataset risk,0.667
+rag,RAG-02,retrieval metrics,retrieval metrics monitoring agents,0.333
+agent,AGENT-01,search read summarise,search read summarise,1.0
+agent,AGENT-02,search read cite,search answer cite,0.333
+system,SYSTEM-01,quality target,completed,0.908
+system,SYSTEM-02,quality target,degraded,0.525
