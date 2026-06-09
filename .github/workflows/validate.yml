@@ -13,6 +13,13 @@ jobs:
       - run: python -m compileall -q src tests examples scripts
       - run: python -m pytest tests -q
       - run: python scripts/run_all_examples.py
+      - name: Run benchmark regression checks
+        run: python scripts/run_benchmark.py
+      - name: Upload benchmark reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-reports
+          path: reports/
       - run: python -m pip install build twine
       - run: python -m build
       - run: python -m twine check dist/*
