@@ -1,7 +1,7 @@
 """Lightweight metrics for large vision-language model evaluation."""
 
 from collections import Counter
-from typing import Iterable
+from typing import Iterable, Mapping, Sequence
 
 
 def normalize_text(text: str) -> str:
@@ -95,3 +95,70 @@ def abstention_rates(
             sum(answerable_items) / len(answerable_items) if answerable_items else 0.0
         ),
     }
+
+
+def yes_no_vqa_metrics(
+    references: Sequence[bool], predictions: Sequence[bool]
+) -> dict[str, float]:
+    """Compute POPE-style metrics for yes/no visual questions.
+
+    ``True`` represents a positive or ``yes`` answer. In addition to accuracy,
+    precision, recall, and F1, the function reports the model's overall yes ratio,
+    which can reveal a tendency to agree with object-presence questions.
+    """
+    if len(references) != len(predictions):
+        raise ValueError("references and predictions must have the same length")
+    if not references:
+        return {
+            "accuracy": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "yes_ratio": 0.0,
+        }
+
+    true_positive = sum(ref and pred for ref, pred in zip(references, predictions))
+    true_negative = sum((not ref) and (not pred) for ref, pred in zip(references, predictions))
+    false_positive = sum((not ref) and pred for ref, pred in zip(references, predictions))
+    false_negative = sum(ref and (not pred) for ref, pred in zip(references, predictions))
+
+    precision = (
+        true_positive / (true_positive + false_positive)
+        if true_positive + false_positive
+        else 0.0
+    )
+    recall = (
+        true_positive / (true_positive + false_negative)
+        if true_positive + false_negative
+        else 0.0
+    )
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+
+    return {
+        "accuracy": (true_positive + true_negative) / len(references),
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "yes_ratio": sum(predictions) / len(predictions),
+    }
+
+
+def mean_rubric_scores(
+    records: Iterable[Mapping[str, float]],
+) -> dict[str, float]:
+    """Average rubric dimensions for human or judge-based VLM evaluation.
+
+    Example dimensions include object recognition, spatial understanding,
+    conciseness, reasonability, and executability.
+    """
+    rows = list(records)
+    if not rows:
+        return {}
+
+    keys = set().union(*(row.keys() for row in rows))
+    result: dict[str, float] = {}
+    for key in sorted(keys):
+        values = [float(row[key]) for row in rows if key in row]
+        if values:
+            result[key] = sum(values) / len(values)
+    return result
