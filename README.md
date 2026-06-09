@@ -13,7 +13,7 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
-| Evaluate LLM or VLM systems | Open the LLM and VLM examples, then compare with the dedicated LLM/RAG governance repository |
+| Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
 | Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 | Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
 
@@ -25,28 +25,30 @@ The aim is to provide practical tutorials, templates, reusable Python utilities,
 
 ## Current focus
 
-The current completed phase is **Monitoring and Lifecycle Evaluation**.
+The current completed phase is **Advanced AI Evaluation**.
 
 New materials include:
 
 ```text
-src/learn_ai_evaluation/monitoring_lifecycle.py
-examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
-tutorials/006-monitoring-and-lifecycle/README.md
-templates/monitoring-lifecycle-report.md
-tests/test_monitoring_lifecycle.py
+src/learn_ai_evaluation/advanced_ai.py
+examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+tutorials/007-advanced-ai-evaluation/README.md
+templates/rag-evaluation-report.md
+templates/agent-evaluation-report.md
+templates/system-level-evaluation-report.md
+tests/test_advanced_ai.py
 ```
 
 Run the worked example:
 
 ```bash
-python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
+python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
 ```
 
-Run the Phase 6 tests:
+Run the Phase 7 tests:
 
 ```bash
-python -m pytest tests/test_monitoring_lifecycle.py -q
+python -m pytest tests/test_advanced_ai.py -q
 ```
 
 ## Previous completed areas
@@ -56,6 +58,7 @@ python -m pytest tests/test_monitoring_lifecycle.py -q
 - Computer vision evaluation, including classification, segmentation, detection, split risks, and failure review
 - Technical medical AI evaluation, including case-level analysis, uncertainty, multi-site evaluation, robustness, change control, and lifecycle monitoring
 - Group performance and robustness evaluation
+- Monitoring and lifecycle evaluation
 - Foundational large language model evaluation
 - Large vision-language model evaluation
 
@@ -67,7 +70,7 @@ python -m pytest tests/test_monitoring_lifecycle.py -q
 4. ✅ Medical AI Evaluation
 5. ✅ Group Performance and Robustness
 6. ✅ Monitoring and Lifecycle Evaluation
-7. Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
+7. ✅ Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
 
 ## Repository structure
 
@@ -97,6 +100,7 @@ pip install -r requirements.txt
 Run examples from the repository root:
 
 ```bash
+python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
 python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
 python examples/group-performance-and-robustness/group_robustness_example.py
 python examples/vlm-evaluation/basic_vlm_evaluation_example.py
