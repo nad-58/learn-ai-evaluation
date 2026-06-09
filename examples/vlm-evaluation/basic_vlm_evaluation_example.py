@@ -15,9 +15,11 @@ from learn_ai_evaluation.vlm_metrics import (  # noqa: E402
     abstention_rates,
     exact_match,
     mean_reciprocal_rank,
+    mean_rubric_scores,
     recall_at_k,
     token_f1,
     unsupported_claim_rate,
+    yes_no_vqa_metrics,
 )
 
 
@@ -32,6 +34,7 @@ def main() -> None:
     f1_scores = [token_f1(r["reference"], r["prediction"]) for r in records]
     ranks = [1, 3, None, 2]
 
+    print("SHORT-ANSWER AND RETRIEVAL METRICS")
     print("Mean exact match:", round(sum(exact_scores) / len(exact_scores), 3))
     print("Mean token F1:", round(sum(f1_scores) / len(f1_scores), 3))
     print("Retrieval MRR:", round(mean_reciprocal_rank(ranks), 3))
@@ -47,6 +50,36 @@ def main() -> None:
             abstained=[False, False, True, False],
         ),
     )
+
+    print("\nOBJECT HALLUCINATION / YES-NO VQA")
+    hallucination_metrics = yes_no_vqa_metrics(
+        references=[True, False, True, False, False, True],
+        predictions=[True, True, True, True, False, True],
+    )
+    for metric, value in hallucination_metrics.items():
+        print(f"{metric}: {value:.3f}")
+
+    print("\nHUMAN OR JUDGE-BASED PLANNING RUBRIC")
+    rubric = mean_rubric_scores(
+        [
+            {
+                "object_recognition": 4,
+                "spatial_understanding": 3,
+                "conciseness": 4,
+                "reasonability": 4,
+                "executability": 5,
+            },
+            {
+                "object_recognition": 3,
+                "spatial_understanding": 4,
+                "conciseness": 3,
+                "reasonability": 4,
+                "executability": 4,
+            },
+        ]
+    )
+    for dimension, value in rubric.items():
+        print(f"{dimension}: {value:.2f}")
 
 
 if __name__ == "__main__":
