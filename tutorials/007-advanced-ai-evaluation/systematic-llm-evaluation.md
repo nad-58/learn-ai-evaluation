@@ -124,7 +124,7 @@ Templates:
 
 ```text
 templates/llm-evaluation-playbook.md
-templates/llm-judge-alignment-report.md
+templates/llm-evaluator-alignment.md
 templates/prompt-iteration-report.md
 ```
 
