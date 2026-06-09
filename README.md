@@ -16,6 +16,9 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
 | Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) and the LLM evaluator example |
 | Review VLM/LVLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
+| Review the synthetic benchmark | Open [`data/synthetic_benchmark.md`](data/synthetic_benchmark.md) and [`data/synthetic_benchmark.csv`](data/synthetic_benchmark.csv) |
+| Review sample cross-system results | Open [`docs/sample_results.md`](docs/sample_results.md) |
+| Review stable release notes | Open [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md) |
 | Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 | Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
 
@@ -27,7 +30,7 @@ The aim is to provide practical tutorials, templates, reusable Python utilities,
 
 ## Current focus
 
-The current completed phase is **Advanced AI Evaluation**.
+The current completed phase is **Advanced AI Evaluation**. Package metadata is prepared for the first stable release, **v1.0.0**.
 
 New materials include:
 
@@ -66,6 +69,20 @@ tests/test_vlm_metrics.py
 ```
 
 The VLM materials cover six capability groups: visual perception, visual knowledge acquisition, visual reasoning, visual commonsense, object hallucination, and embodied or action-oriented intelligence. They also document generation-based evaluation, answer extraction, prompt-template effects, long-response handling, and human or pairwise review.
+
+## Stable release validation
+
+The release-candidate workflow performs:
+
+```bash
+python -m compileall -q src tests examples scripts
+python -m pytest tests -q
+python scripts/run_all_examples.py
+python -m build
+python -m twine check dist/*
+```
+
+GitHub Actions runs these checks for pull requests and pushes. The repository also contains public-safe synthetic benchmark data and a consolidated sample-results report covering LLM, VLM, RAG, agentic AI, and combined system evaluation.
 
 Run the worked examples:
 
@@ -108,13 +125,14 @@ python -m pytest tests/test_vlm_metrics.py -q
 
 ```text
 learn-ai-evaluation/
-├── docs/                         # Roadmap, glossary, and conceptual notes
+├── docs/                         # Roadmap, glossary, reports, and conceptual notes
 ├── tutorials/                    # Main tutorial chapters
 ├── notebooks/                    # Runnable notebooks
 ├── src/learn_ai_evaluation/      # Reusable Python utilities
 ├── data/                         # Synthetic and public example datasets
 ├── templates/                    # Evaluation report and checklist templates
 ├── examples/                     # End-to-end worked examples
+├── scripts/                      # Repository validation utilities
 ├── tests/                        # Lightweight automated checks
 └── assets/                       # Figures and diagrams
 ```
@@ -143,10 +161,11 @@ python examples/computer-vision-evaluation/cv_metrics_example.py
 python examples/dataset-evaluation/dataset_quality_example.py
 ```
 
-Run tests:
+Run tests and all examples:
 
 ```bash
 python -m pytest tests/ -q
+python scripts/run_all_examples.py
 ```
 
 Then open the related tutorial folder for interpretation, limitations, and reporting guidance.
@@ -171,6 +190,7 @@ These external resources are used as methodological references only. The example
 
 ## Development and releases
 
+- Release notes: [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md)
 - Contribution guidance: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Security policy: [`SECURITY.md`](SECURITY.md)
 - Changelog: [`CHANGELOG.md`](CHANGELOG.md)
