@@ -23,28 +23,19 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
+      - name: Install package and development dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          python -m pip install -e ".[dev]"
 
-      - name: Run dataset evaluation example
-        run: python examples/dataset-evaluation/dataset_quality_example.py
+      - name: Compile Python sources
+        run: python -m compileall -q src tests examples scripts
 
-      - name: Run computer vision example
-        run: python examples/computer-vision-evaluation/cv_metrics_example.py
+      - name: Run full test suite
+        run: python -m pytest tests -q
 
-      - name: Run medical AI example
-        run: python examples/medical-ai-evaluation/medical_ai_evaluation_example.py
+      - name: Run all examples
+        run: python scripts/run_all_examples.py
 
-      - name: Run LLM example
-        run: python examples/llm-evaluation/basic_llm_metrics_example.py
-
-      - name: Run VLM example
-        run: python examples/vlm-evaluation/basic_vlm_evaluation_example.py
-
-      - name: Run RAG example
-        run: python examples/rag-evaluation/basic_rag_evaluation_example.py
-
-      - name: Run RAG metric tests
-        run: python -m pytest tests/test_rag_metrics.py -q
+      - name: Run benchmark regression checks
+        run: python scripts/run_benchmark.py
