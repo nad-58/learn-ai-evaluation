@@ -13,9 +13,10 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
-| Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorial, example, and templates |
+| Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorials, examples, and templates |
 | Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) |
-| Review VLM capability coverage and hallucination | Open [`docs/vlm-evaluation-notes.md`](docs/vlm-evaluation-notes.md) and [`templates/vlm-evaluation-report.md`](templates/vlm-evaluation-report.md) |
+| Review VLM capability coverage and hallucination | Open [`tutorials/016-large-vision-language-model-evaluation/README.md`](tutorials/016-large-vision-language-model-evaluation/README.md) |
+| Evaluate a RAG system | Open [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md), [`examples/rag-evaluation/basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py), and [`templates/rag-evaluation-report-template.md`](templates/rag-evaluation-report-template.md) |
 | Run automated benchmark regression checks | Open [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
 | Review benchmark thresholds | Open [`data/benchmark_baseline.csv`](data/benchmark_baseline.csv) |
 | Review generated benchmark results | Open [`reports/benchmark_report.md`](reports/benchmark_report.md) |
@@ -103,6 +104,30 @@ src/learn_ai_evaluation/vlm_metrics.py
 examples/vlm-evaluation/basic_vlm_evaluation_example.py
 templates/vlm-evaluation-report.md
 tests/test_vlm_metrics.py
+```
+
+The RAG evaluation track includes:
+
+```text
+src/learn_ai_evaluation/rag_metrics.py
+examples/rag-evaluation/basic_rag_evaluation_example.py
+tutorials/017-rag-evaluation/README.md
+templates/rag-evaluation-report-template.md
+tests/test_rag_metrics.py
+```
+
+The RAG materials cover retrieval ranking, Precision@K, Recall@K, reciprocal rank, mean reciprocal rank, average precision, context quality, answer correctness, claim support, citation quality, answerability, abstention, robustness, security, efficiency, and end-to-end system evaluation.
+
+Run the RAG example:
+
+```bash
+python examples/rag-evaluation/basic_rag_evaluation_example.py
+```
+
+Run the RAG tests:
+
+```bash
+python -m pytest tests/test_rag_metrics.py -q
 ```
 
 The broader advanced evaluation phase includes LLM, VLM, RAG, agentic AI, and combined system-level evaluation.
