@@ -1,6 +1,6 @@
 # Roadmap
 
-This repository follows a seven-phase learning roadmap from foundational machine-learning evaluation to advanced multimodal and agentic AI evaluation. The current development focus is advanced AI evaluation.
+This repository follows a seven-phase learning roadmap from foundational machine-learning evaluation to advanced multimodal and agentic AI evaluation.
 
 ## Current tutorials
 
@@ -14,6 +14,7 @@ This repository follows a seven-phase learning roadmap from foundational machine
 - 011 Computer Vision Dataset Splits and Failure Review
 - 015 Foundational Large Language Model Evaluation
 - 016 Large Vision-Language Model Evaluation
+- 017 Retrieval-Augmented Generation Evaluation
 
 ## Phase 1 — Foundations and Classical ML Evaluation
 
@@ -41,8 +42,6 @@ This repository follows a seven-phase learning roadmap from foundational machine
 - Dataset documentation
 
 ## Phase 3 — Computer Vision Evaluation
-
-Topics covered:
 
 - Image classification metrics
 - Confusion matrices and per-class precision, recall, and F1
@@ -112,12 +111,20 @@ templates/vlm-evaluation-report-template.md
 tutorials/016-large-vision-language-model-evaluation/README.md
 ```
 
-The VLM phase covers task correctness, visual perception, cross-modal grounding, retrieval, unsupported claims, answerability, abstention, robustness, group analysis, human and model-based judging, safety, efficiency, reproducibility, and integrated system evaluation.
+#### Retrieval-Augmented Generation Evaluation
+
+```text
+src/learn_ai_evaluation/rag_metrics.py
+examples/rag-evaluation/basic_rag_evaluation_example.py
+templates/rag-evaluation-report-template.md
+tutorials/017-rag-evaluation/README.md
+tests/test_rag_metrics.py
+```
+
+The RAG phase covers retrieval ranking, Precision@K, Recall@K, reciprocal rank, mean reciprocal rank, average precision, context quality, answer correctness, claim support, citation precision, answerability, abstention, robustness, slice analysis, safety, efficiency, and end-to-end system evaluation.
 
 ### Next planned additions
 
-- RAG retrieval evaluation
-- RAG answer and grounding evaluation
 - AI agent evaluation
 - Tool-use evaluation
 - Agentic workflow evaluation
