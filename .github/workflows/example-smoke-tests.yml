@@ -42,3 +42,9 @@ jobs:
 
       - name: Run VLM example
         run: python examples/vlm-evaluation/basic_vlm_evaluation_example.py
+
+      - name: Run RAG example
+        run: python examples/rag-evaluation/basic_rag_evaluation_example.py
+
+      - name: Run RAG metric tests
+        run: python -m pytest tests/test_rag_metrics.py -q
