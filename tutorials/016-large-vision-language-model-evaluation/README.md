@@ -1,6 +1,17 @@
 # Large Vision-Language Model Evaluation
 
-Large vision-language models combine visual inputs and language generation. Their evaluation therefore needs to test more than text quality or overall benchmark accuracy.
+Large vision-language models combine visual inputs and language understanding or generation. They are different from both **large language models** and **large vision models**.
+
+- A large language model operates primarily over text or token sequences.
+- A large vision model operates primarily over images or video and produces visual features, labels, boxes, masks, or other perception outputs.
+- A vision-language model explicitly connects visual and linguistic representations.
+- A vision-language-action model extends this connection into action generation or control.
+
+See [`docs/llm-lvm-vlm-vla-taxonomy.md`](../../docs/llm-lvm-vlm-vla-taxonomy.md) before selecting evaluation metrics.
+
+A VLM can take several architectural forms. CLIP-like systems align image and text embeddings, while generative multimodal assistants combine visual encoders with language models and generate text. These systems belong to the same broad family but require different evaluation methods.
+
+Their evaluation therefore needs to test more than text quality or overall benchmark accuracy.
 
 A complete evaluation should cover:
 
@@ -166,4 +177,4 @@ The example demonstrates exact match, token F1, Recall@K, mean reciprocal rank, 
 
 ## Key lesson
 
-A large vision-language model should not be judged only by whether its response sounds plausible. Evaluation must establish whether the output is correct, visually grounded, robust, appropriately uncertain, safe, efficient, and reliable after integration into the wider system.
+A vision-language model should not be judged only by whether its response sounds plausible. Evaluation must establish whether the output is correct, visually grounded, robust, appropriately uncertain, safe, efficient, and reliable after integration into the wider system.
