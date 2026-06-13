@@ -6,11 +6,28 @@ The format follows a simple Keep a Changelog style and uses semantic versioning 
 
 ## [Unreleased]
 
+### Added
+
+- Practical taxonomy distinguishing large language models, large vision models, vision-language models, and vision-language-action models
+- Small-VLM workshop tool-inventory fine-tuning case study
+- Structured JSON schema, synthetic training metadata, evaluation utilities, tests, and examples for the tool-inventory task
+- Optional supervised fine-tuning skeleton for Hugging Face TRL workflows
+- Generic optional-example marker and regression tests for example discovery
+- Protective `.gitignore` rules for local images, model weights, checkpoints, credentials, and generated outputs
+
+### Changed
+
+- Separated unit tests, cross-version lightweight example checks, and full release validation into clearer workflows
+- Added dependency auditing to the full validation workflow
+- Aligned development requirements with package metadata
+- Prevented optional GPU or external-data training scripts from running in lightweight CI
+
 ### Planned
 
 - Expand benchmark coverage with more public-safe synthetic examples
 - Add optional integration examples for external evaluation platforms
 - Add cross-version trend visualisation
+- Add real licensed workshop images and a measured base-versus-fine-tuned small-VLM comparison
 
 ## [1.1.0] - 2026-06-09
 
