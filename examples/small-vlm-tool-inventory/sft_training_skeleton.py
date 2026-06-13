@@ -1,3 +1,4 @@
+# ci: optional-example
 """Illustrative VLM SFT skeleton for the workshop-tool task.
 
 The script exits successfully when optional training dependencies or real image files
