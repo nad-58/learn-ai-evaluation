@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and local configuration
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated outputs and experiment tracking
+outputs/
+checkpoints/
+wandb/
+mlruns/
+
+# Model weights and large training artefacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Private or locally sourced data
+local_data/
+private_data/
+examples/small-vlm-tool-inventory/images/
+
+# Temporary files
+*.tmp
+*.log
