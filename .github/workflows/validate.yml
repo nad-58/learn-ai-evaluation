@@ -1,5 +1,10 @@
 name: validate
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -8,11 +13,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install -e '.[dev]'
-      - run: python -m compileall -q src tests examples scripts
-      - run: python -m pytest tests -q
-      - run: python scripts/run_all_examples.py
+      - name: Install package and development tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+      - name: Compile repository Python
+        run: python -m compileall -q src tests examples scripts
+      - name: Run full test suite
+        run: python -m pytest tests -q
+      - name: Run lightweight examples
+        run: python scripts/run_all_examples.py
       - name: Run benchmark regression checks
         run: python scripts/run_benchmark.py
       - name: Upload benchmark reports
@@ -20,6 +30,9 @@ jobs:
         with:
           name: benchmark-reports
           path: reports/
-      - run: python -m pip install build twine
-      - run: python -m build
-      - run: python -m twine check dist/*
+      - name: Audit installed dependencies
+        run: python -m pip_audit
+      - name: Build package
+        run: python -m build
+      - name: Check package metadata
+        run: python -m twine check dist/*
