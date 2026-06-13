@@ -2,18 +2,19 @@
 
 A practical, code-first repository for learning how to evaluate AI and machine learning systems across the full AI lifecycle.
 
-The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, vision-language models, RAG systems, and AI agents.
+The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, large vision models, vision-language models, RAG systems, vision-language-action models, and AI agents.
 
 ## Quick navigation
 
 | Goal | Start here |
 |---|---|
 | Understand the scope | Read this README and the roadmap |
+| Distinguish LLM, large vision model, VLM, and VLA | Open [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
 | Evaluate data quality | Open the dataset-evaluation tutorial and example |
 | Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
-| Evaluate LLM, VLM, RAG, or agentic AI systems | Open the advanced-ai-evaluation tutorials, examples, and templates |
+| Evaluate LLM, VLM, RAG, VLA, or agentic AI systems | Open the advanced-ai-evaluation tutorials, examples, and templates |
 | Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) |
 | Review VLM capability coverage and hallucination | Open [`tutorials/016-large-vision-language-model-evaluation/README.md`](tutorials/016-large-vision-language-model-evaluation/README.md) |
 | Evaluate a RAG system | Open [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md), [`examples/rag-evaluation/basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py), and [`templates/rag-evaluation-report-template.md`](templates/rag-evaluation-report-template.md) |
@@ -84,6 +85,14 @@ The command fails when any track falls below this floor. GitHub Actions uses thi
 
 ## Advanced evaluation resources
 
+The model-family taxonomy includes:
+
+```text
+docs/llm-lvm-vlm-vla-taxonomy.md
+```
+
+It explains why language models, large vision models, vision-language models, and vision-language-action models require different evaluation plans.
+
 The systematic LLM evaluation track includes:
 
 ```text
@@ -130,7 +139,7 @@ Run the RAG tests:
 python -m pytest tests/test_rag_metrics.py -q
 ```
 
-The broader advanced evaluation phase includes LLM, VLM, RAG, agentic AI, and combined system-level evaluation.
+The broader advanced evaluation phase includes LLM, large vision model, VLM, RAG, VLA, agentic AI, and combined system-level evaluation.
 
 ## Completed roadmap
 
@@ -140,7 +149,7 @@ The broader advanced evaluation phase includes LLM, VLM, RAG, agentic AI, and co
 4. ✅ Medical AI Evaluation
 5. ✅ Group Performance and Robustness
 6. ✅ Monitoring and Lifecycle Evaluation
-7. ✅ Advanced AI Evaluation, including LLM, VLM, RAG, and agentic AI evaluation
+7. ✅ Advanced AI Evaluation, including LLM, large vision model, VLM, RAG, VLA, and agentic AI evaluation
 8. ✅ Automated Benchmarking and Regression Evaluation
 
 ## Repository structure
@@ -188,6 +197,13 @@ GitHub Actions performs the same checks for pushes and pull requests. Benchmark 
 ## Methodological references used in the advanced tracks
 
 The systematic LLM evaluation track was informed by the provided engineering playbook on moving beyond subjective output review toward measurable, repeatable prompt evaluation. The repository implementation uses original educational utilities and templates.
+
+For the model-family taxonomy and VLM track:
+
+- IBM’s VLM overview distinguishes vision-language models from vision-only models by their explicit combination of visual and language components.
+- DINOv2 is used as an example of a vision foundation model producing transferable visual features.
+- CLIP and Flamingo illustrate different VLM architectures: aligned embeddings versus generative visual-language modelling.
+- OpenVLA illustrates the additional action-policy boundary introduced by embodied models.
 
 For the VLM track:
 
