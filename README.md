@@ -10,7 +10,7 @@ The repository covers classical machine learning, dataset quality, computer visi
 |---|---|
 | Understand the scope | Read this README and the roadmap |
 | Distinguish LLM, large vision model, VLM, and VLA | Open [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
-| Evaluate data quality | Open the dataset-evaluation tutorial and example |
+| Evaluate data quality | Open [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and run [`examples/dataset-evaluation/dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
 | Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
@@ -31,6 +31,31 @@ Many AI projects focus mainly on building models. A useful AI system requires mo
 
 The aim is to provide practical tutorials, templates, reusable Python utilities, benchmarks, and worked examples that make AI evaluation easier to understand and apply.
 
+## Dataset evaluation
+
+The dataset-evaluation track now contains:
+
+```text
+tutorials/002-dataset-evaluation/README.md
+src/learn_ai_evaluation/dataset_quality.py
+examples/dataset-evaluation/dataset_quality_example.py
+tests/test_dataset_quality.py
+```
+
+Run the example:
+
+```bash
+python examples/dataset-evaluation/dataset_quality_example.py
+```
+
+Run the tests:
+
+```bash
+python -m pytest tests/test_dataset_quality.py -q
+```
+
+The track covers missing values, duplicates, class balance, numeric feature distributions, categorical cardinality, potential outliers, exact split overlap, and generated Markdown reporting.
+
 ## Current release
 
 The current package version is **1.1.0 — Automated Benchmarking and Regression Evaluation**.
@@ -48,31 +73,10 @@ tests/test_benchmark_regression.py
 docs/benchmark-regression-guide.md
 ```
 
-The benchmark runner reads the synthetic benchmark, calculates per-track and overall scores, compares them with acceptance rules, generates three report formats, and returns a non-zero exit code when a regression is detected.
-
-## Run automated benchmarking
-
-From the repository root:
+Run automated benchmarking:
 
 ```bash
 python scripts/run_benchmark.py
-```
-
-Generated outputs:
-
-```text
-reports/benchmark_results.json
-reports/benchmark_results.csv
-reports/benchmark_report.md
-```
-
-Optional configuration:
-
-```bash
-python scripts/run_benchmark.py \
-  --benchmark data/synthetic_benchmark.csv \
-  --baseline data/benchmark_baseline.csv \
-  --output-dir reports
 ```
 
 For each track, the effective acceptance floor is:
@@ -90,8 +94,6 @@ The model-family taxonomy includes:
 ```text
 docs/llm-lvm-vlm-vla-taxonomy.md
 ```
-
-It explains why language models, large vision models, vision-language models, and vision-language-action models require different evaluation plans.
 
 The systematic LLM evaluation track includes:
 
@@ -124,22 +126,6 @@ tutorials/017-rag-evaluation/README.md
 templates/rag-evaluation-report-template.md
 tests/test_rag_metrics.py
 ```
-
-The RAG materials cover retrieval ranking, Precision@K, Recall@K, reciprocal rank, mean reciprocal rank, average precision, context quality, answer correctness, claim support, citation quality, answerability, abstention, robustness, security, efficiency, and end-to-end system evaluation.
-
-Run the RAG example:
-
-```bash
-python examples/rag-evaluation/basic_rag_evaluation_example.py
-```
-
-Run the RAG tests:
-
-```bash
-python -m pytest tests/test_rag_metrics.py -q
-```
-
-The broader advanced evaluation phase includes LLM, large vision model, VLM, RAG, VLA, agentic AI, and combined system-level evaluation.
 
 ## Completed roadmap
 
@@ -181,8 +167,6 @@ python -m pip install -e ".[dev]"
 
 ## Validation
 
-Run the full local validation sequence:
-
 ```bash
 python -m compileall -q src tests examples scripts
 python -m pytest tests -q
@@ -192,33 +176,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-GitHub Actions performs the same checks for pushes and pull requests. Benchmark reports are uploaded as CI artifacts.
-
-## Methodological references used in the advanced tracks
-
-The systematic LLM evaluation track was informed by the provided engineering playbook on moving beyond subjective output review toward measurable, repeatable prompt evaluation. The repository implementation uses original educational utilities and templates.
-
-For the model-family taxonomy and VLM track:
-
-- IBM’s VLM overview distinguishes vision-language models from vision-only models by their explicit combination of visual and language components.
-- DINOv2 is used as an example of a vision foundation model producing transferable visual features.
-- CLIP and Flamingo illustrate different VLM architectures: aligned embeddings versus generative visual-language modelling.
-- OpenVLA illustrates the additional action-policy boundary introduced by embodied models.
-
-For the VLM track:
-
-- LVLM-eHub provides a benchmark structure combining quantitative evaluation and open-world human preference assessment.
-- VLMEvalKit provides an open-source reference for generation-based evaluation across many VLM models and benchmarks, with exact matching and model-based answer extraction.
-
-## Development and releases
-
-- v1.1.0 notes: [`docs/release_notes_1_1_0.md`](docs/release_notes_1_1_0.md)
-- v1.0.0 notes: [`docs/release_notes_1_0_0.md`](docs/release_notes_1_0_0.md)
-- Contribution guidance: [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- Security policy: [`SECURITY.md`](SECURITY.md)
-- Changelog: [`CHANGELOG.md`](CHANGELOG.md)
-- Package metadata: [`pyproject.toml`](pyproject.toml)
-- Citation metadata: [`CITATION.cff`](CITATION.cff)
+GitHub Actions performs the same checks for pushes and pull requests.
 
 ## Public-safe scope
 
