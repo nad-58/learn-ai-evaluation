@@ -9,7 +9,7 @@ A practical, code-first repository for evaluating AI and machine-learning system
 | Evaluate data quality | [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and [`dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
 | Evaluate a computer-vision model | [`tutorials/003-computer-vision-evaluation/README.md`](tutorials/003-computer-vision-evaluation/README.md) and [`cv_metrics_example.py`](examples/computer-vision-evaluation/cv_metrics_example.py) |
 | Review fairness and robustness | [`tutorials/005-group-performance-and-robustness/README.md`](tutorials/005-group-performance-and-robustness/README.md), [`docs/fairness-and-robustness-detailed-guide.md`](docs/fairness-and-robustness-detailed-guide.md), [`fairness_metrics_example.py`](examples/group-performance-and-robustness/fairness_metrics_example.py), and [`group_robustness_example.py`](examples/group-performance-and-robustness/group_robustness_example.py) |
-| Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and example |
+| Review monitoring and lifecycle controls | [`tutorials/006-monitoring-and-lifecycle/README.md`](tutorials/006-monitoring-and-lifecycle/README.md), [`threshold_example.py`](examples/monitoring-and-lifecycle/threshold_example.py), [`drift_example.py`](examples/monitoring-and-lifecycle/drift_example.py), and [`monitoring_lifecycle_example.py`](examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py) |
 | Distinguish LLM, large vision model, VLM, and VLA | [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
 | Evaluate a RAG system | [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md) and [`basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py) |
 | Run benchmark regression checks | [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
@@ -51,8 +51,6 @@ tests/test_fairness_metrics.py
 tests/test_group_robustness.py
 ```
 
-Run the examples and tests:
-
 ```bash
 python examples/group-performance-and-robustness/fairness_metrics_example.py
 python examples/group-performance-and-robustness/group_robustness_example.py
@@ -60,19 +58,39 @@ python -m pytest tests/test_fairness_metrics.py -q
 python -m pytest tests/test_group_robustness.py -q
 ```
 
+## Monitoring and lifecycle evaluation
+
+```text
+tutorials/006-monitoring-and-lifecycle/README.md
+src/learn_ai_evaluation/monitoring_lifecycle.py
+examples/monitoring-and-lifecycle/threshold_example.py
+examples/monitoring-and-lifecycle/drift_example.py
+examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
+tests/test_monitoring_lifecycle.py
+```
+
+Run the examples and tests:
+
+```bash
+python examples/monitoring-and-lifecycle/threshold_example.py
+python examples/monitoring-and-lifecycle/drift_example.py
+python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
+python -m pytest tests/test_monitoring_lifecycle.py -q
+```
+
 Coverage includes:
 
-- human, data, and engineering sources of unwanted bias;
-- demographic parity and selection-rate ratios;
-- equality of opportunity through true-positive-rate comparison;
-- predictive equality through false-positive-rate comparison;
-- equalized-odds gaps;
-- positive predictive value and worst-group analysis;
-- subgroup sample sizes, prevalence, confidence intervals, gaps, and ratios;
-- statistical, formal, and empirical robustness approaches;
-- Gaussian noise, missing-input, and feature-scale perturbations;
-- baselines, thresholds, acceptance decisions, mitigation, and retesting;
-- lifecycle monitoring, drift, and change control.
+- reference baselines and monitoring windows;
+- binary performance monitoring;
+- warning and action thresholds;
+- Population Stability Index and feature drift;
+- input, output, performance, and operational signals;
+- lifecycle decisions and escalation;
+- change-impact assessment;
+- retraining triggers;
+- proportionate re-validation;
+- incident containment and rollback;
+- monitoring reports and next-review decisions.
 
 ## Advanced evaluation
 
