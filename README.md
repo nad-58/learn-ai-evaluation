@@ -11,7 +11,7 @@ The repository covers classical machine learning, dataset quality, computer visi
 | Understand the scope | Read this README and the roadmap |
 | Distinguish LLM, large vision model, VLM, and VLA | Open [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
 | Evaluate data quality | Open [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and run [`examples/dataset-evaluation/dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
-| Evaluate a computer vision model | Open the computer-vision tutorial and metrics example |
+| Evaluate a computer vision model | Open [`tutorials/003-computer-vision-evaluation/README.md`](tutorials/003-computer-vision-evaluation/README.md) and run [`examples/computer-vision-evaluation/cv_metrics_example.py`](examples/computer-vision-evaluation/cv_metrics_example.py) |
 | Review fairness and robustness | Open the group-performance and robustness materials |
 | Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
 | Evaluate LLM, VLM, RAG, VLA, or agentic AI systems | Open the advanced-ai-evaluation tutorials, examples, and templates |
@@ -33,7 +33,7 @@ The aim is to provide practical tutorials, templates, reusable Python utilities,
 
 ## Dataset evaluation
 
-The dataset-evaluation track now contains:
+The dataset-evaluation track contains:
 
 ```text
 tutorials/002-dataset-evaluation/README.md
@@ -55,6 +55,42 @@ python -m pytest tests/test_dataset_quality.py -q
 ```
 
 The track covers missing values, duplicates, class balance, numeric feature distributions, categorical cardinality, potential outliers, exact split overlap, and generated Markdown reporting.
+
+## Computer vision evaluation
+
+The computer-vision track contains:
+
+```text
+tutorials/003-computer-vision-evaluation/README.md
+src/learn_ai_evaluation/computer_vision_metrics.py
+examples/computer-vision-evaluation/classification_metrics_example.py
+examples/computer-vision-evaluation/segmentation_metrics_example.py
+examples/computer-vision-evaluation/detection_metrics_example.py
+examples/computer-vision-evaluation/cv_metrics_example.py
+tests/test_computer_vision_metrics.py
+```
+
+Run the combined example:
+
+```bash
+python examples/computer-vision-evaluation/cv_metrics_example.py
+```
+
+Run the individual examples:
+
+```bash
+python examples/computer-vision-evaluation/classification_metrics_example.py
+python examples/computer-vision-evaluation/segmentation_metrics_example.py
+python examples/computer-vision-evaluation/detection_metrics_example.py
+```
+
+Run the tests:
+
+```bash
+python -m pytest tests/test_computer_vision_metrics.py -q
+```
+
+The track covers classification confusion matrices, per-class precision, recall and F1, binary and multiclass segmentation, pixel accuracy, IoU, Dice, bounding-box overlap, detection precision and recall, and average precision.
 
 ## Current release
 
