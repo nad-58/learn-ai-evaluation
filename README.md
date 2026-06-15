@@ -9,7 +9,7 @@ A practical, code-first repository for evaluating AI and machine-learning system
 | Evaluate data quality | [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and [`dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
 | Evaluate a computer-vision model | [`tutorials/003-computer-vision-evaluation/README.md`](tutorials/003-computer-vision-evaluation/README.md) and [`cv_metrics_example.py`](examples/computer-vision-evaluation/cv_metrics_example.py) |
 | Review fairness and robustness | [`tutorials/005-group-performance-and-robustness/README.md`](tutorials/005-group-performance-and-robustness/README.md), [`docs/fairness-and-robustness-detailed-guide.md`](docs/fairness-and-robustness-detailed-guide.md), [`fairness_metrics_example.py`](examples/group-performance-and-robustness/fairness_metrics_example.py), and [`group_robustness_example.py`](examples/group-performance-and-robustness/group_robustness_example.py) |
-| Review monitoring and lifecycle controls | [`tutorials/006-monitoring-and-lifecycle/README.md`](tutorials/006-monitoring-and-lifecycle/README.md), [`threshold_example.py`](examples/monitoring-and-lifecycle/threshold_example.py), [`drift_example.py`](examples/monitoring-and-lifecycle/drift_example.py), and [`monitoring_lifecycle_example.py`](examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py) |
+| Review monitoring and lifecycle controls | [`tutorials/006-monitoring-and-lifecycle/README.md`](tutorials/006-monitoring-and-lifecycle/README.md), [`docs/multimodal-monitoring-numerical-examples.md`](docs/multimodal-monitoring-numerical-examples.md), and [`multimodal_monitoring_example.py`](examples/monitoring-and-lifecycle/multimodal_monitoring_example.py) |
 | Distinguish LLM, large vision model, VLM, and VLA | [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
 | Evaluate a RAG system | [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md) and [`basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py) |
 | Run benchmark regression checks | [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
@@ -40,17 +40,6 @@ Covers confusion matrices, per-class precision/recall/F1, pixel accuracy, IoU, D
 
 This track is an original public-safe synthesis informed by bias, robustness, and AI-testing materials supplied by the repository owner.
 
-```text
-tutorials/005-group-performance-and-robustness/README.md
-docs/fairness-and-robustness-detailed-guide.md
-src/learn_ai_evaluation/fairness_metrics.py
-src/learn_ai_evaluation/group_robustness.py
-examples/group-performance-and-robustness/fairness_metrics_example.py
-examples/group-performance-and-robustness/group_robustness_example.py
-tests/test_fairness_metrics.py
-tests/test_group_robustness.py
-```
-
 ```bash
 python examples/group-performance-and-robustness/fairness_metrics_example.py
 python examples/group-performance-and-robustness/group_robustness_example.py
@@ -59,6 +48,8 @@ python -m pytest tests/test_group_robustness.py -q
 ```
 
 ## Monitoring and lifecycle evaluation
+
+Core monitoring files:
 
 ```text
 tutorials/006-monitoring-and-lifecycle/README.md
@@ -69,7 +60,7 @@ examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
 tests/test_monitoring_lifecycle.py
 ```
 
-Run the examples and tests:
+Run the core examples:
 
 ```bash
 python examples/monitoring-and-lifecycle/threshold_example.py
@@ -78,19 +69,39 @@ python examples/monitoring-and-lifecycle/monitoring_lifecycle_example.py
 python -m pytest tests/test_monitoring_lifecycle.py -q
 ```
 
-Coverage includes:
+### Multimodal numerical monitoring
 
-- reference baselines and monitoring windows;
-- binary performance monitoring;
-- warning and action thresholds;
-- Population Stability Index and feature drift;
-- input, output, performance, and operational signals;
-- lifecycle decisions and escalation;
-- change-impact assessment;
-- retraining triggers;
-- proportionate re-validation;
-- incident containment and rollback;
-- monitoring reports and next-review decisions.
+The repository includes explicit numerical datasets and code for tabular, image, and speech monitoring:
+
+```text
+docs/multimodal-monitoring-numerical-examples.md
+src/learn_ai_evaluation/multimodal_monitoring.py
+examples/monitoring-and-lifecycle/multimodal_monitoring_example.py
+tests/test_multimodal_monitoring.py
+
+data/monitoring/tabular_reference.csv
+data/monitoring/tabular_current.csv
+data/monitoring/image_reference.csv
+data/monitoring/image_current.csv
+data/monitoring/speech_reference.csv
+data/monitoring/speech_current.csv
+```
+
+Run it:
+
+```bash
+python examples/monitoring-and-lifecycle/multimodal_monitoring_example.py
+python -m pytest tests/test_multimodal_monitoring.py -q
+```
+
+It demonstrates:
+
+- tabular drift using age, score, latency, and prediction data;
+- image monitoring using 8 by 8 grayscale matrices;
+- image brightness, contrast, bright-pixel, and edge statistics;
+- speech monitoring using 32-sample synthetic waveforms;
+- RMS amplitude, peak amplitude, zero-crossing rate, and dominant frequency;
+- absolute and relative feature changes between reference and current windows.
 
 ## Advanced evaluation
 
