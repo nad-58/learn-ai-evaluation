@@ -32,9 +32,7 @@ def test_fairness_gap_and_ratio():
     )
     gaps = fairness_gap_summary(rates)
     assert demographic_parity_ratio(rates, "A", "B") == pytest.approx(0.8)
-    assert gaps.loc[
-        gaps["metric"] == "selection_rate", "absolute_gap"
-    ].iloc[0] == pytest.approx(0.1)
+    assert gaps.loc[gaps["metric"] == "selection_rate", "absolute_gap"].iloc[0] == pytest.approx(0.1)
 
     odds_gaps = equalized_odds_gaps(rates)
     assert odds_gaps["true_positive_rate_gap"] == pytest.approx(0.2)
