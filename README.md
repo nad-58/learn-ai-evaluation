@@ -1,195 +1,97 @@
 # Learn AI Evaluation
 
-A practical, code-first repository for learning how to evaluate AI and machine learning systems across the full AI lifecycle.
-
-The repository covers classical machine learning, dataset quality, computer vision, medical AI, group performance, robustness, lifecycle monitoring, and advanced AI evaluation including LLMs, large vision models, vision-language models, RAG systems, vision-language-action models, and AI agents.
+A practical, code-first repository for evaluating AI and machine-learning systems across the lifecycle: data, models, groups, robustness, monitoring, and advanced AI systems.
 
 ## Quick navigation
 
 | Goal | Start here |
 |---|---|
-| Understand the scope | Read this README and the roadmap |
-| Distinguish LLM, large vision model, VLM, and VLA | Open [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
-| Evaluate data quality | Open [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and run [`examples/dataset-evaluation/dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
-| Evaluate a computer vision model | Open [`tutorials/003-computer-vision-evaluation/README.md`](tutorials/003-computer-vision-evaluation/README.md) and run [`examples/computer-vision-evaluation/cv_metrics_example.py`](examples/computer-vision-evaluation/cv_metrics_example.py) |
-| Review fairness and robustness | Open the group-performance and robustness materials |
-| Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and report template |
-| Evaluate LLM, VLM, RAG, VLA, or agentic AI systems | Open the advanced-ai-evaluation tutorials, examples, and templates |
-| Move beyond manual prompt checking | Open [`systematic-llm-evaluation.md`](tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md) |
-| Review VLM capability coverage and hallucination | Open [`tutorials/016-large-vision-language-model-evaluation/README.md`](tutorials/016-large-vision-language-model-evaluation/README.md) |
-| Evaluate a RAG system | Open [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md), [`examples/rag-evaluation/basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py), and [`templates/rag-evaluation-report-template.md`](templates/rag-evaluation-report-template.md) |
-| Run automated benchmark regression checks | Open [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
-| Review benchmark thresholds | Open [`data/benchmark_baseline.csv`](data/benchmark_baseline.csv) |
-| Review generated benchmark results | Open [`reports/benchmark_report.md`](reports/benchmark_report.md) |
-| Review v1.1.0 release notes | Open [`docs/release_notes_1_1_0.md`](docs/release_notes_1_1_0.md) |
-| Contribute | Read [`CONTRIBUTING.md`](CONTRIBUTING.md) |
-| Cite the repository | Use [`CITATION.cff`](CITATION.cff) |
-
-## Why this repository exists
-
-Many AI projects focus mainly on building models. A useful AI system requires more than model training. It requires clear evaluation of data, model behaviour, metrics, robustness, fairness, system integration, monitoring, and re-evaluation over time.
-
-The aim is to provide practical tutorials, templates, reusable Python utilities, benchmarks, and worked examples that make AI evaluation easier to understand and apply.
+| Evaluate data quality | [`tutorials/002-dataset-evaluation/README.md`](tutorials/002-dataset-evaluation/README.md) and [`dataset_quality_example.py`](examples/dataset-evaluation/dataset_quality_example.py) |
+| Evaluate a computer-vision model | [`tutorials/003-computer-vision-evaluation/README.md`](tutorials/003-computer-vision-evaluation/README.md) and [`cv_metrics_example.py`](examples/computer-vision-evaluation/cv_metrics_example.py) |
+| Review fairness and robustness | [`tutorials/005-group-performance-and-robustness/README.md`](tutorials/005-group-performance-and-robustness/README.md), [`docs/fairness-and-robustness-detailed-guide.md`](docs/fairness-and-robustness-detailed-guide.md), [`fairness_metrics_example.py`](examples/group-performance-and-robustness/fairness_metrics_example.py), and [`group_robustness_example.py`](examples/group-performance-and-robustness/group_robustness_example.py) |
+| Review monitoring and lifecycle controls | Open the monitoring-and-lifecycle tutorial and example |
+| Distinguish LLM, large vision model, VLM, and VLA | [`docs/llm-lvm-vlm-vla-taxonomy.md`](docs/llm-lvm-vlm-vla-taxonomy.md) |
+| Evaluate a RAG system | [`tutorials/017-rag-evaluation/README.md`](tutorials/017-rag-evaluation/README.md) and [`basic_rag_evaluation_example.py`](examples/rag-evaluation/basic_rag_evaluation_example.py) |
+| Run benchmark regression checks | [`docs/benchmark-regression-guide.md`](docs/benchmark-regression-guide.md) |
+| Contribute | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
 
 ## Dataset evaluation
 
-The dataset-evaluation track contains:
-
-```text
-tutorials/002-dataset-evaluation/README.md
-src/learn_ai_evaluation/dataset_quality.py
-examples/dataset-evaluation/dataset_quality_example.py
-tests/test_dataset_quality.py
-```
-
-Run the example:
-
 ```bash
 python examples/dataset-evaluation/dataset_quality_example.py
-```
-
-Run the tests:
-
-```bash
 python -m pytest tests/test_dataset_quality.py -q
 ```
 
-The track covers missing values, duplicates, class balance, numeric feature distributions, categorical cardinality, potential outliers, exact split overlap, and generated Markdown reporting.
+Covers missingness, duplicates, class balance, feature distributions, categorical cardinality, outliers, split leakage, and reporting.
 
-## Computer vision evaluation
-
-The computer-vision track contains:
-
-```text
-tutorials/003-computer-vision-evaluation/README.md
-src/learn_ai_evaluation/computer_vision_metrics.py
-examples/computer-vision-evaluation/classification_metrics_example.py
-examples/computer-vision-evaluation/segmentation_metrics_example.py
-examples/computer-vision-evaluation/detection_metrics_example.py
-examples/computer-vision-evaluation/cv_metrics_example.py
-tests/test_computer_vision_metrics.py
-```
-
-Run the combined example:
-
-```bash
-python examples/computer-vision-evaluation/cv_metrics_example.py
-```
-
-Run the individual examples:
+## Computer-vision evaluation
 
 ```bash
 python examples/computer-vision-evaluation/classification_metrics_example.py
 python examples/computer-vision-evaluation/segmentation_metrics_example.py
 python examples/computer-vision-evaluation/detection_metrics_example.py
-```
-
-Run the tests:
-
-```bash
+python examples/computer-vision-evaluation/cv_metrics_example.py
 python -m pytest tests/test_computer_vision_metrics.py -q
 ```
 
-The track covers classification confusion matrices, per-class precision, recall and F1, binary and multiclass segmentation, pixel accuracy, IoU, Dice, bounding-box overlap, detection precision and recall, and average precision.
+Covers confusion matrices, per-class precision/recall/F1, pixel accuracy, IoU, Dice, bounding-box IoU, detection precision/recall, and average precision.
 
-## Current release
+## Fairness and robustness evaluation
 
-The current package version is **1.1.0 — Automated Benchmarking and Regression Evaluation**.
-
-Version 1.1.0 adds:
+This track is an original public-safe synthesis informed by bias, robustness, and AI-testing materials supplied by the repository owner.
 
 ```text
-src/learn_ai_evaluation/benchmark_regression.py
-scripts/run_benchmark.py
-data/benchmark_baseline.csv
-reports/benchmark_results.json
-reports/benchmark_results.csv
-reports/benchmark_report.md
-tests/test_benchmark_regression.py
-docs/benchmark-regression-guide.md
+tutorials/005-group-performance-and-robustness/README.md
+docs/fairness-and-robustness-detailed-guide.md
+src/learn_ai_evaluation/fairness_metrics.py
+src/learn_ai_evaluation/group_robustness.py
+examples/group-performance-and-robustness/fairness_metrics_example.py
+examples/group-performance-and-robustness/group_robustness_example.py
+tests/test_fairness_metrics.py
+tests/test_group_robustness.py
 ```
 
-Run automated benchmarking:
+Run the examples and tests:
+
+```bash
+python examples/group-performance-and-robustness/fairness_metrics_example.py
+python examples/group-performance-and-robustness/group_robustness_example.py
+python -m pytest tests/test_fairness_metrics.py -q
+python -m pytest tests/test_group_robustness.py -q
+```
+
+Coverage includes:
+
+- human, data, and engineering sources of unwanted bias;
+- demographic parity and selection-rate ratios;
+- equality of opportunity through true-positive-rate comparison;
+- predictive equality through false-positive-rate comparison;
+- equalized-odds gaps;
+- positive predictive value and worst-group analysis;
+- subgroup sample sizes, prevalence, confidence intervals, gaps, and ratios;
+- statistical, formal, and empirical robustness approaches;
+- Gaussian noise, missing-input, and feature-scale perturbations;
+- baselines, thresholds, acceptance decisions, mitigation, and retesting;
+- lifecycle monitoring, drift, and change control.
+
+## Advanced evaluation
+
+The repository also contains evaluation material for LLMs, large vision models, VLMs, RAG systems, VLA systems, agents, and combined systems.
+
+```bash
+python examples/advanced-ai-evaluation/advanced_ai_evaluation_example.py
+python examples/llm-judge-evaluation/llm_judge_example.py
+python examples/vlm-evaluation/basic_vlm_evaluation_example.py
+python examples/rag-evaluation/basic_rag_evaluation_example.py
+```
+
+## Automated benchmark and regression checks
 
 ```bash
 python scripts/run_benchmark.py
 ```
 
-For each track, the effective acceptance floor is:
-
-```text
-max(minimum_score, baseline_score - max_allowed_drop)
-```
-
-The command fails when any track falls below this floor. GitHub Actions uses this behaviour as a regression gate and uploads the generated reports as a workflow artifact.
-
-## Advanced evaluation resources
-
-The model-family taxonomy includes:
-
-```text
-docs/llm-lvm-vlm-vla-taxonomy.md
-```
-
-The systematic LLM evaluation track includes:
-
-```text
-src/learn_ai_evaluation/llm_judge.py
-tutorials/007-advanced-ai-evaluation/systematic-llm-evaluation.md
-examples/llm-judge-evaluation/llm_judge_example.py
-templates/llm-evaluation-playbook.md
-templates/llm-evaluator-alignment.md
-templates/prompt-iteration-report.md
-tests/test_llm_judge.py
-```
-
-The VLM evaluation track includes:
-
-```text
-docs/vlm-evaluation-notes.md
-src/learn_ai_evaluation/vlm_metrics.py
-examples/vlm-evaluation/basic_vlm_evaluation_example.py
-templates/vlm-evaluation-report.md
-tests/test_vlm_metrics.py
-```
-
-The RAG evaluation track includes:
-
-```text
-src/learn_ai_evaluation/rag_metrics.py
-examples/rag-evaluation/basic_rag_evaluation_example.py
-tutorials/017-rag-evaluation/README.md
-templates/rag-evaluation-report-template.md
-tests/test_rag_metrics.py
-```
-
-## Completed roadmap
-
-1. ✅ Classical ML Evaluation
-2. ✅ Dataset Evaluation
-3. ✅ Computer Vision Evaluation
-4. ✅ Medical AI Evaluation
-5. ✅ Group Performance and Robustness
-6. ✅ Monitoring and Lifecycle Evaluation
-7. ✅ Advanced AI Evaluation, including LLM, large vision model, VLM, RAG, VLA, and agentic AI evaluation
-8. ✅ Automated Benchmarking and Regression Evaluation
-
-## Repository structure
-
-```text
-learn-ai-evaluation/
-├── docs/                         # Roadmap, guides, reports, and conceptual notes
-├── tutorials/                    # Main tutorial chapters
-├── notebooks/                    # Runnable notebooks
-├── src/learn_ai_evaluation/      # Reusable Python utilities
-├── data/                         # Synthetic benchmark data and baselines
-├── reports/                      # Machine-readable and human-readable results
-├── templates/                    # Evaluation report and checklist templates
-├── examples/                     # End-to-end worked examples
-├── scripts/                      # Validation and benchmark runners
-├── tests/                        # Automated checks
-└── assets/                       # Figures and diagrams
-```
+The runner compares current LLM, VLM, RAG, agent, and system-level scores with stored baselines and fails when a permitted regression limit is breached.
 
 ## Installation
 
@@ -201,7 +103,7 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"
 ```
 
-## Validation
+## Full validation
 
 ```bash
 python -m compileall -q src tests examples scripts
@@ -212,12 +114,10 @@ python -m build
 python -m twine check dist/*
 ```
 
-GitHub Actions performs the same checks for pushes and pull requests.
-
 ## Public-safe scope
 
-This repository is educational and technical. It avoids confidential case material and client-specific documentation. Examples use synthetic data, public datasets, or generalised scenarios.
+Examples use synthetic data, public datasets, or generalised scenarios. The repository does not include confidential client material.
 
 ## License
 
-MIT License for code. Written educational material can be reused with attribution unless otherwise stated.
+MIT License for code. Educational material can be reused with attribution unless otherwise stated.
