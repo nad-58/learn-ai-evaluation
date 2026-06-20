@@ -2,6 +2,12 @@
 
 Agentic AI changes the assurance problem because the system can plan, call tools, pass outputs between components, and take actions with reduced human correction. The central governance question is not only whether the model gives a good answer, but whether the full autonomous workflow remains controlled.
 
+For the full reviewer-style report, see:
+
+```text
+docs/agentic-ai-risk-management-full-report.md
+```
+
 ## 1. Why agentic AI is different
 
 Classical ML and many generative AI systems are mostly responsive: an input is provided and the system returns an output. Agentic AI can use one model output as the next model input, pursue a goal over several steps, and execute tool calls. The supplied source describes this transition from responsive tools to autonomous agents and highlights that complex workflow automation can create a critical vulnerability when decisions happen without human oversight.
