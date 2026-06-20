@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="780" viewBox="0 0 1300 780" role="img" aria-labelledby="title desc">
+  <title id="title">Multi-layer governance stack for agentic AI</title>
+  <desc id="desc">A stacked governance diagram showing model, orchestration, tool, process, and accountability layers.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.18"/></filter>
+    <style>
+      .text{font-family:Arial, Helvetica, sans-serif;fill:#263238}
+      .title{font-size:31px;font-weight:700}.label{font-size:19px;font-weight:700}.small{font-size:14px}
+      .card{stroke-width:2;filter:url(#shadow)}
+    </style>
+  </defs>
+  <rect width="1300" height="780" fill="#F8FBFD"/>
+  <text x="650" y="54" class="text title" text-anchor="middle">Multi-Layered Agentic AI Governance Framework</text>
+  <text x="650" y="88" class="text small" text-anchor="middle">Governance must cover model behaviour, orchestration loops, tool access, process controls, and human accountability.</text>
+
+  <g transform="translate(145 135)">
+    <rect x="0" y="0" width="1010" height="95" rx="20" fill="#E8F3FF" stroke="#2E86AB" class="card"/>
+    <text x="35" y="38" class="text label">1. Model layer</text>
+    <text x="35" y="66" class="text small">Policy alignment • unsafe instruction detection • groundedness • hallucination checks • refusal and escalation behaviour</text>
+  </g>
+  <g transform="translate(185 250)">
+    <rect x="0" y="0" width="930" height="95" rx="20" fill="#FFF4D6" stroke="#E3A321" class="card"/>
+    <text x="35" y="38" class="text label">2. Orchestration layer</text>
+    <text x="35" y="66" class="text small">Loop detection • step budgets • retry ceilings • timeouts • state validation • memory controls • checkpointing</text>
+  </g>
+  <g transform="translate(225 365)">
+    <rect x="0" y="0" width="850" height="95" rx="20" fill="#FDE4EA" stroke="#D1495B" class="card"/>
+    <text x="35" y="38" class="text label">3. Tool layer</text>
+    <text x="35" y="66" class="text small">Role-based access • least privilege • scoped credentials • allow/deny lists • sandboxing • write-action approval</text>
+  </g>
+  <g transform="translate(265 480)">
+    <rect x="0" y="0" width="770" height="95" rx="20" fill="#E9F7EF" stroke="#2FA66A" class="card"/>
+    <text x="35" y="38" class="text label">4. Process controls</text>
+    <text x="35" y="66" class="text small">Risk-based permissions • audit trails • monitoring • evaluation • red teaming • change control</text>
+  </g>
+  <g transform="translate(305 595)">
+    <rect x="0" y="0" width="690" height="95" rx="20" fill="#EFEAFE" stroke="#6B4EFF" class="card"/>
+    <text x="35" y="38" class="text label">5. Accountability structures</text>
+    <text x="35" y="66" class="text small">Use-case owner • risk acceptance • harm response • regulatory evidence • vendor accountability • rollback authority</text>
+  </g>
+
+  <g class="text small">
+    <text x="70" y="185" font-weight="700">Technical guardrails</text>
+    <line x1="118" y1="198" x2="118" y2="453" stroke="#263238" stroke-width="2"/>
+    <circle cx="118" cy="198" r="5" fill="#263238"/><circle cx="118" cy="453" r="5" fill="#263238"/>
+    <text x="1060" y="530" font-weight="700">Operational governance</text>
+    <line x1="1135" y1="543" x2="1135" y2="660" stroke="#263238" stroke-width="2"/>
+    <circle cx="1135" cy="543" r="5" fill="#263238"/><circle cx="1135" cy="660" r="5" fill="#263238"/>
+  </g>
+</svg>
