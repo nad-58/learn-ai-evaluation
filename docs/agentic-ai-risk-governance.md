@@ -2,10 +2,11 @@
 
 Agentic AI changes the assurance problem because the system can plan, call tools, pass outputs between components, and take actions with reduced human correction. The central governance question is not only whether the model gives a good answer, but whether the full autonomous workflow remains controlled.
 
-For the full reviewer-style report, see:
+For the full reviewer-style report and visual companion, see:
 
 ```text
 docs/agentic-ai-risk-management-full-report.md
+docs/agentic-ai-risk-figures.md
 ```
 
 ## 1. Why agentic AI is different
