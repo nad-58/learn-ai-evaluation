@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="760" viewBox="0 0 1250 760" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic AI risk and control matrix</title>
+  <desc id="desc">A matrix mapping agentic AI risk themes to model, orchestration, tool, process, and ownership controls.</desc>
+  <style>
+    .text{font-family:Arial, Helvetica, sans-serif;fill:#263238}.title{font-size:31px;font-weight:700}.small{font-size:13px}.head{font-size:14px;font-weight:700}.risk{font-size:13px;font-weight:700}
+  </style>
+  <rect width="1250" height="760" fill="#F8FBFD"/>
+  <text x="625" y="48" class="text title" text-anchor="middle">Agentic AI Risk-to-Control Matrix</text>
+  <text x="625" y="80" class="text small" text-anchor="middle">Every major risk theme should map to model, orchestration, tool, process, and ownership controls.</text>
+  <g transform="translate(40 125)">
+    <rect x="0" y="0" width="1170" height="565" rx="18" fill="#FFFFFF" stroke="#C8D3E0"/>
+    <g class="text head" text-anchor="middle">
+      <rect x="0" y="0" width="250" height="60" fill="#E8F3FF"/>
+      <rect x="250" y="0" width="170" height="60" fill="#E8F3FF"/>
+      <rect x="420" y="0" width="190" height="60" fill="#FFF4D6"/>
+      <rect x="610" y="0" width="170" height="60" fill="#FDE4EA"/>
+      <rect x="780" y="0" width="190" height="60" fill="#E9F7EF"/>
+      <rect x="970" y="0" width="200" height="60" fill="#EFEAFE"/>
+      <text x="125" y="35">Risk theme</text>
+      <text x="335" y="27">Model</text><text x="335" y="45">controls</text>
+      <text x="515" y="27">Orchestration</text><text x="515" y="45">controls</text>
+      <text x="695" y="27">Tool</text><text x="695" y="45">controls</text>
+      <text x="875" y="27">Process</text><text x="875" y="45">controls</text>
+      <text x="1070" y="27">Accountability</text><text x="1070" y="45">owner</text>
+    </g>
+    <g class="text small">
+      <g transform="translate(0 60)"><rect x="0" y="0" width="1170" height="80" fill="#FFFFFF" stroke="#E1E8F0"/><text x="18" y="32" class="risk">Out-of-scope</text><text x="18" y="52" class="risk">instruction</text><text x="270" y="38">Policy check</text><text x="270" y="58">alignment score</text><text x="445" y="38">Plan validation</text><text x="445" y="58">safe route</text><text x="630" y="38">Allowed tools</text><text x="630" y="58">sandbox</text><text x="800" y="38">Scenario tests</text><text x="800" y="58">release gate</text><text x="990" y="38">Use-case owner</text><text x="990" y="58">risk owner</text></g>
+      <g transform="translate(0 140)"><rect x="0" y="0" width="1170" height="80" fill="#FBFDFF" stroke="#E1E8F0"/><text x="18" y="32" class="risk">Planning loop</text><text x="18" y="52" class="risk">or cascade</text><text x="270" y="45">N/A</text><text x="445" y="38">Loop detection</text><text x="445" y="58">step budget</text><text x="630" y="38">Rate limits</text><text x="630" y="58">cost limits</text><text x="800" y="38">Monitoring</text><text x="800" y="58">runbook</text><text x="990" y="38">Platform owner</text><text x="990" y="58">ops owner</text></g>
+      <g transform="translate(0 220)"><rect x="0" y="0" width="1170" height="80" fill="#FFFFFF" stroke="#E1E8F0"/><text x="18" y="32" class="risk">Confidential data</text><text x="18" y="52" class="risk">exposure</text><text x="270" y="38">Output filter</text><text x="270" y="58">data labels</text><text x="445" y="38">Data-flow check</text><text x="445" y="58">memory limits</text><text x="630" y="38">Scoped access</text><text x="630" y="58">retrieval ACL</text><text x="800" y="38">Data policy</text><text x="800" y="58">approval gate</text><text x="990" y="38">Data owner</text><text x="990" y="58">privacy owner</text></g>
+      <g transform="translate(0 300)"><rect x="0" y="0" width="1170" height="80" fill="#FBFDFF" stroke="#E1E8F0"/><text x="18" y="32" class="risk">High-impact</text><text x="18" y="52" class="risk">action</text><text x="270" y="38">Policy check</text><text x="270" y="58">uncertainty flag</text><text x="445" y="38">Approval point</text><text x="445" y="58">state check</text><text x="630" y="38">Write lock</text><text x="630" y="58">least privilege</text><text x="800" y="38">Risk-based</text><text x="800" y="58">permissions</text><text x="990" y="38">Business owner</text><text x="990" y="58">approval owner</text></g>
+      <g transform="translate(0 380)"><rect x="0" y="0" width="1170" height="80" fill="#FFFFFF" stroke="#E1E8F0"/><text x="18" y="32" class="risk">Unsupported claim</text><text x="18" y="52" class="risk">used in decision</text><text x="270" y="38">Grounding check</text><text x="270" y="58">citation check</text><text x="445" y="38">Evidence check</text><text x="445" y="58">confidence gate</text><text x="630" y="45">N/A</text><text x="800" y="38">Evaluation</text><text x="800" y="58">human review</text><text x="990" y="38">Product owner</text><text x="990" y="58">domain reviewer</text></g>
+      <g transform="translate(0 460)"><rect x="0" y="0" width="1170" height="105" fill="#FBFDFF" stroke="#E1E8F0"/><text x="18" y="38" class="risk">Model or vendor</text><text x="18" y="58" class="risk">change</text><text x="270" y="45">Regression tests</text><text x="270" y="65">version pinning</text><text x="445" y="45">Compatibility</text><text x="445" y="65">rollback route</text><text x="630" y="45">API boundary</text><text x="630" y="65">contract tests</text><text x="800" y="45">Change control</text><text x="800" y="65">release approval</text><text x="990" y="45">Vendor owner</text><text x="990" y="65">compliance owner</text></g>
+    </g>
+  </g>
+  <text x="625" y="725" class="text small" text-anchor="middle">The matrix is a review tool: missing cells indicate weak governance evidence.</text>
+</svg>
