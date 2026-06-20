@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="760" viewBox="0 0 1300 760" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic AI workflow with control checkpoints</title>
+  <desc id="desc">A flowchart showing goal intake, planning, model reasoning, tool calls, observations, approvals, monitoring, and escalation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#263238"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.16"/></filter>
+    <style>
+      .box{fill:#fff;stroke:#2E86AB;stroke-width:2;filter:url(#shadow)}
+      .guard{fill:#FFF6DB;stroke:#E3A321;stroke-width:2;filter:url(#shadow)}
+      .risk{fill:#FFE9E9;stroke:#D1495B;stroke-width:2;filter:url(#shadow)}
+      .text{font-family:Arial, Helvetica, sans-serif;fill:#263238}
+      .small{font-size:14px}.med{font-size:18px}.big{font-size:28px;font-weight:700}
+      .arrow{stroke:#263238;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .loop{stroke:#6B4EFF;stroke-width:3;fill:none;marker-end:url(#arrow);stroke-dasharray:8 6}
+    </style>
+  </defs>
+  <rect width="1300" height="760" fill="#F8FBFD"/>
+  <text x="650" y="50" class="text big" text-anchor="middle">Agentic AI Workflow and Control Points</text>
+  <text x="650" y="82" class="text small" text-anchor="middle">The key risk is the model-tool loop: every action can create a new observation and a new decision.</text>
+
+  <g class="text med" text-anchor="middle">
+    <rect x="70" y="150" width="155" height="80" rx="16" class="box"/>
+    <text x="147" y="185" font-weight="700">Goal intake</text><text x="147" y="210" class="small">intent + scope</text>
+    <rect x="285" y="150" width="155" height="80" rx="16" class="box"/>
+    <text x="362" y="185" font-weight="700">Plan</text><text x="362" y="210" class="small">steps + tools</text>
+    <rect x="500" y="150" width="155" height="80" rx="16" class="box"/>
+    <text x="577" y="185" font-weight="700">Model</text><text x="577" y="210" class="small">reason + decide</text>
+    <rect x="715" y="150" width="155" height="80" rx="16" class="box"/>
+    <text x="792" y="185" font-weight="700">Tool call</text><text x="792" y="210" class="small">API / file / code</text>
+    <rect x="930" y="150" width="155" height="80" rx="16" class="box"/>
+    <text x="1007" y="185" font-weight="700">Observation</text><text x="1007" y="210" class="small">result + state</text>
+    <rect x="1105" y="330" width="155" height="80" rx="16" class="box"/>
+    <text x="1182" y="365" font-weight="700">Action</text><text x="1182" y="390" class="small">approved output</text>
+  </g>
+
+  <path d="M225 190 H285" class="arrow"/><path d="M440 190 H500" class="arrow"/><path d="M655 190 H715" class="arrow"/><path d="M870 190 H930" class="arrow"/>
+  <path d="M1085 190 C1195 190, 1195 275, 1182 330" class="arrow"/>
+  <path d="M1007 230 C1007 305, 600 305, 577 230" class="loop"/>
+  <text x="795" y="292" class="text small" text-anchor="middle" fill="#6B4EFF">agent loop: observe → reason → act</text>
+
+  <g class="text" text-anchor="middle">
+    <rect x="260" y="305" width="210" height="85" rx="16" class="guard"/>
+    <text x="365" y="337" font-size="17" font-weight="700">Scope check</text><text x="365" y="362" class="small">is the goal bounded?</text>
+    <rect x="515" y="305" width="210" height="85" rx="16" class="guard"/>
+    <text x="620" y="337" font-size="17" font-weight="700">Policy check</text><text x="620" y="362" class="small">is the plan allowed?</text>
+    <rect x="770" y="305" width="210" height="85" rx="16" class="guard"/>
+    <text x="875" y="337" font-size="17" font-weight="700">Permission check</text><text x="875" y="362" class="small">is the tool allowed?</text>
+  </g>
+  <path d="M362 230 V305" class="arrow"/><path d="M577 230 V305" class="arrow"/><path d="M792 230 V305" class="arrow"/>
+
+  <g class="text" text-anchor="middle">
+    <rect x="150" y="500" width="220" height="92" rx="16" class="risk"/>
+    <text x="260" y="532" font-size="17" font-weight="700">Escalate / stop</text><text x="260" y="557" class="small">interruptibility</text><text x="260" y="578" class="small">human approval</text>
+    <rect x="445" y="500" width="220" height="92" rx="16" class="guard"/>
+    <text x="555" y="532" font-size="17" font-weight="700">Audit trail</text><text x="555" y="557" class="small">goal, plan, tool call</text><text x="555" y="578" class="small">decision, approval</text>
+    <rect x="740" y="500" width="220" height="92" rx="16" class="guard"/>
+    <text x="850" y="532" font-size="17" font-weight="700">Monitoring</text><text x="850" y="557" class="small">drift, loops, cost</text><text x="850" y="578" class="small">policy violations</text>
+    <rect x="1035" y="500" width="220" height="92" rx="16" class="risk"/>
+    <text x="1145" y="532" font-size="17" font-weight="700">Incident review</text><text x="1145" y="557" class="small">rollback + learning</text><text x="1145" y="578" class="small">owner accountable</text>
+  </g>
+  <path d="M365 390 C345 445, 290 465, 260 500" class="arrow"/>
+  <path d="M620 390 C610 445, 570 465, 555 500" class="arrow"/>
+  <path d="M875 390 C870 445, 855 465, 850 500" class="arrow"/>
+  <path d="M1182 410 V500" class="arrow"/>
+  <path d="M370 546 H445" class="arrow"/><path d="M665 546 H740" class="arrow"/><path d="M960 546 H1035" class="arrow"/>
+
+  <text x="650" y="690" class="text small" text-anchor="middle">A deployable agent needs checkpoints inside the loop, not only a final output review.</text>
+</svg>
